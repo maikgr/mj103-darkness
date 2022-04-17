@@ -7,20 +7,21 @@ public class LevelGenerator : MonoBehaviour
     public GameObject WallAsset;
     public GameObject FloorAsset;
     private List<GameObject> generatedAssets = new List<GameObject>();
+    private bool isGenerating = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         GenerateLevel();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetKeyDown(KeyCode.R) && !isGenerating)
         {
+            isGenerating = true;
             DestroyAssets();
             GenerateLevel();
+            isGenerating = false;
         }
     }
 
@@ -31,8 +32,16 @@ public class LevelGenerator : MonoBehaviour
         var bottomLeft = RoomTemplate.BottomLeft[GetRandomIndex(RoomTemplate.BottomLeft.Count)];
         var bottomRight = RoomTemplate.BottomRight[GetRandomIndex(RoomTemplate.BottomRight.Count)];
 
-        var currentPoint = new Vector2(0, 0);
-        foreach(var row in topLeft)
+        GenerateTemplate(new Vector2(0, 0), topLeft);
+        GenerateTemplate(new Vector2(8, 0), topRight);
+        GenerateTemplate(new Vector2(0, -6), bottomLeft);
+        GenerateTemplate(new Vector2(8, -6), bottomRight);
+    }
+
+    private void GenerateTemplate(Vector2 startingPoint, string[] template)
+    {
+        var currentPoint = new Vector2(startingPoint.x, startingPoint.y);
+        foreach(var row in template)
         {
             foreach(var cell in row)
             {
@@ -55,7 +64,7 @@ public class LevelGenerator : MonoBehaviour
 
                 currentPoint.x += 1;
             }
-            currentPoint.x = 0;
+            currentPoint.x = startingPoint.x;
             currentPoint.y -= 1;
         }
     }
