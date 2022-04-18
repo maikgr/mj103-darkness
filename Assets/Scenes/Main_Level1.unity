@@ -159,7 +159,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.3554201, g: 0.39697057, b: 0.46226418, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 984184634}
   m_Layer: 0
   m_Name: LevelManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -249,5 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c3e6c8136ca1548899883d43b94d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WallAsset: {fileID: 5333485559158432298, guid: 78ee81090aba9e548a7c3d60809d7a8e, type: 3}
+  WallAsset: {fileID: 162923817060587987, guid: 870444053a7522e4aa7b78acfc4d16f2, type: 3}
   FloorAsset: {fileID: 4165611612309144663, guid: fb7c65ff286b1914895ca0024c9ba054, type: 3}
+  PlayerAsset: {fileID: 4958018913491840405, guid: cb00c84348a34754e96a6a6f57c43f9b, type: 3}
+  ExitAsset: {fileID: 5057055745281124227, guid: 8880f8c285b0c7a42b6ae8c4c7429150, type: 3}
