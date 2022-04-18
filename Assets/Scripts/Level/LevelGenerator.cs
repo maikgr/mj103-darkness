@@ -6,6 +6,8 @@ public class LevelGenerator : MonoBehaviour
 {
     public GameObject WallAsset;
     public GameObject FloorAsset;
+    public GameObject PlayerAsset;
+    public GameObject ExitAsset;
     private List<GameObject> generatedAssets = new List<GameObject>();
     private bool isGenerating = false;
 
@@ -14,15 +16,20 @@ public class LevelGenerator : MonoBehaviour
         GenerateLevel();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.R) && !isGenerating)
         {
-            isGenerating = true;
-            DestroyAssets();
-            GenerateLevel();
-            isGenerating = false;
+            RestartLevel();
         }
+    }
+
+    public void RestartLevel()
+    {
+        isGenerating = true;
+        DestroyAssets();
+        GenerateLevel();
+        isGenerating = false;
     }
 
     private void GenerateLevel()
@@ -45,21 +52,23 @@ public class LevelGenerator : MonoBehaviour
         {
             foreach(var cell in row)
             {
-                GameObject asset = null;
                 if (cell == 'W')
                 {
-                    asset = WallAsset;
+                    GenerateAsset(WallAsset, currentPoint);
                 }
                 else if (cell == 'E')
                 {
-                    asset = FloorAsset;
+                    GenerateAsset(FloorAsset, currentPoint);
                 }
-
-                if (asset != null)
+                else if (cell == 'P')
                 {
-                    var obj = GameObject.Instantiate(asset, currentPoint, Quaternion.identity);
-                    obj.transform.SetParent(gameObject.transform);
-                    generatedAssets.Add(obj);
+                    GenerateAsset(FloorAsset, currentPoint);
+                    GenerateAsset(PlayerAsset, currentPoint);
+                }
+                else if (cell == 'X')
+                {
+                    GenerateAsset(FloorAsset, currentPoint);
+                    GenerateAsset(ExitAsset, currentPoint);
                 }
 
                 currentPoint.x += 1;
@@ -67,6 +76,13 @@ public class LevelGenerator : MonoBehaviour
             currentPoint.x = startingPoint.x;
             currentPoint.y -= 1;
         }
+    }
+
+    private void GenerateAsset(GameObject asset, Vector2 position)
+    {
+        var obj = GameObject.Instantiate(asset, position, Quaternion.identity);
+        obj.transform.SetParent(gameObject.transform);
+        generatedAssets.Add(obj);
     }
 
     private void DestroyAssets()
@@ -98,14 +114,14 @@ public class LevelGenerator : MonoBehaviour
                         "WWWWWWWW",
                         "WWWWWWWW",
                         "WWEEEEEE",
-                        "WWEEEEEE",
+                        "WWEPEEEE",
                         "WWEEEEEE",
                         "WWEEEWWW",
                     },
                     new string[]
                     {
                         "WWWWWWWW",
-                        "WWEEEEEE",
+                        "WWEPEEEE",
                         "WWEEEEEE",
                         "WWWEEWWE",
                         "WWWWEEWW",
@@ -114,7 +130,7 @@ public class LevelGenerator : MonoBehaviour
                     new string[]
                     {
                         "WWWWWWWW",
-                        "WWEEWWWW",
+                        "WWEPWWWW",
                         "WWEEEEWW",
                         "WWEEWEEE",
                         "WWEEWEEE",
@@ -123,7 +139,7 @@ public class LevelGenerator : MonoBehaviour
                     new string[]
                     {
                         "WWWWWWWW",
-                        "WWEEEEWW",
+                        "WWEEEPWW",
                         "WWEEWWWW",
                         "WWEEWWEE",
                         "WWEEEEEE",
@@ -230,7 +246,7 @@ public class LevelGenerator : MonoBehaviour
                     {
                         "EEEEEEWW",
                         "EEWWWWWW",
-                        "EEEEEEWW",
+                        "EEEEEEEX",
                         "EEEWWWWW",
                         "EEWWWWWW",
                         "WWWWWWWW",
@@ -240,7 +256,7 @@ public class LevelGenerator : MonoBehaviour
                         "WWWEEWWW",
                         "EEWWEEWW",
                         "EEEEEEWW",
-                        "EEEEEEWW",
+                        "EEEEEEEX",
                         "EWWWWWWW",
                         "WWWWWWWW",
                     },
@@ -251,14 +267,14 @@ public class LevelGenerator : MonoBehaviour
                         "EEEEEEWW",
                         "EEEEWWWW",
                         "EEEEEEEW",
-                        "WWWWWWWW",
+                        "WWWWWWXW",
                     },
                     new string[]
                     {
                         "EEWEEEWW",
                         "EEWWWEEW",
                         "EWWWWEEW",
-                        "EEWWWEEW",
+                        "EEWWWEEX",
                         "EEEEEEEW",
                         "WWWWWWWW",
                     },
