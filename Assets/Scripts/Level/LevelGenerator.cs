@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
@@ -38,11 +39,30 @@ public class LevelGenerator : MonoBehaviour
         var topRight = RoomTemplate.TopRight[GetRandomIndex(RoomTemplate.TopRight.Count)];
         var bottomLeft = RoomTemplate.BottomLeft[GetRandomIndex(RoomTemplate.BottomLeft.Count)];
         var bottomRight = RoomTemplate.BottomRight[GetRandomIndex(RoomTemplate.BottomRight.Count)];
+        var merged = MergeTemplate(new string[][] { topLeft, topRight }, new string[][] { bottomLeft, bottomRight });
 
-        GenerateTemplate(new Vector2(0, 0), topLeft);
-        GenerateTemplate(new Vector2(8, 0), topRight);
-        GenerateTemplate(new Vector2(0, -6), bottomLeft);
-        GenerateTemplate(new Vector2(8, -6), bottomRight);
+        GenerateTemplate(new Vector2(0, 0), merged);
+    }
+
+    // Each group of template represent row
+    private string[] MergeTemplate(params string[][][] templates)
+    {
+        var result = new List<string[]>();
+        foreach(var template in templates)
+        {
+            List<string> row = new List<string>();
+            for(var i = 0; i < template[0].Length; ++i)
+            {
+                string rowTemp = "";
+                for(var j = 0; j < template.Length; ++j)
+                {
+                    rowTemp += template[j][i];
+                }
+                row.Add(rowTemp);
+            }
+            result.Add(row.ToArray());
+        }
+        return result.SelectMany(_ => _).ToArray();
     }
 
     private void GenerateTemplate(Vector2 startingPoint, string[] template)
@@ -101,6 +121,8 @@ public class LevelGenerator : MonoBehaviour
     /**
     * W = Wall
     * E = Empty Ground
+    * P = Player Spawwn
+    * X = Exit
     **/
     private static class RoomTemplate
     {
