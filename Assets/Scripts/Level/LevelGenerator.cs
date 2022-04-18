@@ -5,7 +5,15 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public GameObject WallAsset;
+    public GameObject Wall4Sides;
+    public GameObject Wall3Sides;
+    public GameObject Wall2Sides;
+    public GameObject Wall1Sides;
+    public GameObject Wall4Corners;
+    public GameObject Wall3Corners;
+    public GameObject Wall2Corners;
+    public GameObject Wall1Corners;
+    public GameObject WallInner;
     public GameObject FloorAsset;
     public GameObject PlayerAsset;
     public GameObject ExitAsset;
@@ -68,13 +76,115 @@ public class LevelGenerator : MonoBehaviour
     private void GenerateTemplate(Vector2 startingPoint, string[] template)
     {
         var currentPoint = new Vector2(startingPoint.x, startingPoint.y);
-        foreach(var row in template)
+        for(var i = 0; i < template.Length; ++i)
         {
-            foreach(var cell in row)
+            var row = template[i];
+            for(var j = 0; j < row.Length; ++j)
             {
+                var cell = row[j];
                 if (cell == 'W')
                 {
-                    GenerateAsset(WallAsset, currentPoint);
+                    var sideCount = 0;
+                    var cornerCount = 0;
+                    var rotationSide = Quaternion.identity;
+                    var rotationCorner = Quaternion.identity;
+                    if (i > 0)
+                    {
+                        var topRowIndex = i - 1;
+                        // Top left neighbour
+                        if (j > 0 && template[topRowIndex][j - 1] != 'W') {
+                            cornerCount += 1;
+                        }
+                        // Top right neighbour
+                        if (j < row.Length - 1 && template[topRowIndex][j + 1] != 'W')
+                        {
+                            cornerCount += 1;
+                            rotationCorner = Quaternion.Euler(0, 0, -90);
+                        }
+                        // Top middle neighbour
+                        if (template[topRowIndex][j] != 'W')
+                        {
+                            sideCount += 1;
+                        }
+                    }
+                    // Left side neighbour
+                    if (j > 0 && template[i][j - 1] != 'W')
+                    {
+                        sideCount += 1;
+                        rotationSide = Quaternion.Euler(0, 0, 90);
+                    }
+                    // Right side neighbour
+                    if (j < row.Length - 1 && template[i][j + 1] != 'W')
+                    {
+                        sideCount += 1;
+                        rotationSide = Quaternion.Euler(0, 0, -90);
+                    }
+                    if (i < template.Length - 1)
+                    {
+                        var bottomRowIndex = i + 1;
+                        // Bottom left neighbour
+                        if (j > 0 && template[bottomRowIndex][j - 1] != 'W') {
+                            cornerCount += 1;
+                            rotationCorner = Quaternion.Euler(0, 0, 90);
+                        }
+                        // Bottom right neighbour
+                        if (j < row.Length - 1 && template[bottomRowIndex][j + 1] != 'W')
+                        {
+                            cornerCount += 1;
+                            rotationCorner = Quaternion.Euler(0, 0, 180);
+                        }
+                        // Bottom middle neighbour
+                        if (template[bottomRowIndex][j] != 'W')
+                        {
+                            sideCount += 1;
+                            rotationSide = Quaternion.Euler(0, 0, 180);
+                        }
+                    }
+
+                    GameObject wallAsset;
+                    if (sideCount > 0)
+                    {
+                        switch(sideCount)
+                        {
+                            case 1:
+                                wallAsset = Wall1Sides;
+                                break;
+                            case 2:
+                                wallAsset = Wall2Sides;
+                                break;
+                            case 3:
+                                wallAsset = Wall3Sides;
+                                break;
+                            case 4:
+                            default:
+                                wallAsset = Wall4Sides;
+                                break;
+                        }
+                        GenerateAsset(wallAsset, currentPoint, rotationSide);
+                    }
+                    else 
+                    {
+                        switch(cornerCount)
+                        {
+                            case 1:
+                                wallAsset = Wall1Corners;
+                                break;
+                            case 2:
+                                wallAsset = Wall2Corners;
+                                break;
+                            case 3:
+                                wallAsset = Wall3Corners;
+                                break;
+                            case 4:
+                                wallAsset = Wall4Corners;
+                                break;
+                            default:
+                                wallAsset = WallInner;
+                                break;
+                        }
+                        GenerateAsset(wallAsset, currentPoint, rotationCorner);
+                    }
+
                 }
                 else if (cell == 'E')
                 {
@@ -98,9 +208,11 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    private void GenerateAsset(GameObject asset, Vector2 position)
+    private void GenerateAsset(GameObject asset, Vector2 position, Quaternion? rotation = null)
     {
         var obj = GameObject.Instantiate(asset, position, Quaternion.identity);
+        var sprite = obj.GetComponentInChildren<SpriteRenderer>().transform;
+        sprite.localRotation = rotation ?? Quaternion.identity;
         obj.transform.SetParent(gameObject.transform);
         generatedAssets.Add(obj);
     }
