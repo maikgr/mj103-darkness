@@ -254,7 +254,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -278,7 +278,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: -5.5, z: -10}
+  m_LocalPosition: {x: 9.5, y: -4.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -329,12 +329,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c3e6c8136ca1548899883d43b94d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CompositeShadowParent: {fileID: 0}
+  CompositeShadowParent: {fileID: 202926115}
   FloorAsset: {fileID: 4165611612309144663, guid: fb7c65ff286b1914895ca0024c9ba054, type: 3}
   PlayerAsset: {fileID: 4958018913491840405, guid: cb00c84348a34754e96a6a6f57c43f9b, type: 3}
   ExitAsset: {fileID: 5057055745281124227, guid: 8880f8c285b0c7a42b6ae8c4c7429150, type: 3}
   WallObjectGenerator: {fileID: 984184635}
   ExitObjectGenerator: {fileID: 984184636}
+  TemplateJson: {fileID: 4900000, guid: e79a7e792e3432f47873f064a715784b, type: 3}
 --- !u!114 &984184635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,7 +388,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227990132}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
