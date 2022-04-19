@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    public GameObject CompositeShadowParent;
     public GameObject FloorAsset;
     public GameObject PlayerAsset;
     public GameObject ExitAsset;
@@ -108,7 +109,7 @@ public class LevelGenerator : MonoBehaviour
     {
         var obj = GameObject.Instantiate(asset, position, Quaternion.identity);
         obj.transform.localRotation = rotation ?? Quaternion.identity;
-        obj.transform.SetParent(gameObject.transform);
+        obj.transform.SetParent(CompositeShadowParent.transform);
         generatedAssets.Add(obj);
     }
 
