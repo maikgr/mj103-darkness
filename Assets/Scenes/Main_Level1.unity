@@ -216,6 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 984184633}
   - component: {fileID: 984184634}
+  - component: {fileID: 984184635}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: GameController
@@ -249,15 +250,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c3e6c8136ca1548899883d43b94d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Wall4Sides: {fileID: 8890144380491664663, guid: 9ef4d0f793d88f54db225dca370e3ff4, type: 3}
-  Wall3Sides: {fileID: 6507652292832254135, guid: 9c8fcd526afc4664f8ee6162d75878f9, type: 3}
-  Wall2Sides: {fileID: 8879449971754742290, guid: 34d9fda529fdd824db8a3092b533e2b6, type: 3}
-  Wall1Sides: {fileID: 7170343025713525829, guid: fe251cddf057e9f4ab6a036f4e40a3ea, type: 3}
-  Wall4Corners: {fileID: 5498444393732769341, guid: cc8e59ba22550a2428016c89b3f494fe, type: 3}
-  Wall3Corners: {fileID: 4757508638358864333, guid: f8165af4b4c26a345bb4516b2e3122e0, type: 3}
-  Wall2Corners: {fileID: 9142861512703695865, guid: 4ea05b2d3bb85fa47b76fbbc85a583fb, type: 3}
-  Wall1Corners: {fileID: 7211572234812643602, guid: 052de65b8e32e6b4cb5d1ead62e75417, type: 3}
-  WallInner: {fileID: 162923817060587987, guid: 870444053a7522e4aa7b78acfc4d16f2, type: 3}
   FloorAsset: {fileID: 4165611612309144663, guid: fb7c65ff286b1914895ca0024c9ba054, type: 3}
   PlayerAsset: {fileID: 4958018913491840405, guid: cb00c84348a34754e96a6a6f57c43f9b, type: 3}
   ExitAsset: {fileID: 5057055745281124227, guid: 8880f8c285b0c7a42b6ae8c4c7429150, type: 3}
+  WallObjectGenerator: {fileID: 984184635}
+--- !u!114 &984184635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984184632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b693693e7386674483f59cd78485942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WallBasePrefab: {fileID: 162923817060587987, guid: 870444053a7522e4aa7b78acfc4d16f2, type: 3}
+  WallSidePrefab: {fileID: 7170343025713525829, guid: fe251cddf057e9f4ab6a036f4e40a3ea, type: 3}
+  WallCornerPrefab: {fileID: 7211572234812643602, guid: 052de65b8e32e6b4cb5d1ead62e75417, type: 3}

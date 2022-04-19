@@ -6,18 +6,10 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public GameObject Wall4Sides;
-    public GameObject Wall3Sides;
-    public GameObject Wall2Sides;
-    public GameObject Wall1Sides;
-    public GameObject Wall4Corners;
-    public GameObject Wall3Corners;
-    public GameObject Wall2Corners;
-    public GameObject Wall1Corners;
-    public GameObject WallInner;
     public GameObject FloorAsset;
     public GameObject PlayerAsset;
     public GameObject ExitAsset;
+    public WallObjectGenerator WallObjectGenerator;
     private List<GameObject> generatedAssets = new List<GameObject>();
     private bool isGenerating = false;
 
@@ -85,8 +77,8 @@ public class LevelGenerator : MonoBehaviour
                 var cell = row[j];
                 if (cell == 'W')
                 {
-                    var wall = GenerateWallAsset(template, row, i, j);
-                    GenerateAsset(wall.Item1, currentPoint, wall.Item2);
+                    var wall = WallObjectGenerator.GetWallObject(template, i, j);
+                    GenerateAsset(wall, currentPoint);
                 }
                 else if (cell == 'E')
                 {
@@ -107,122 +99,6 @@ public class LevelGenerator : MonoBehaviour
             }
             currentPoint.x = startingPoint.x;
             currentPoint.y -= 1;
-        }
-    }
-
-    private (GameObject, Quaternion) GenerateWallAsset(string[] template, string row, int templateIndex, int rowIndex)
-    {
-        var sides = new bool[4] { false, false, false, false}; // top, right, bottom, left
-        var corners = new bool[4] { false, false, false, false}; // topleft, topright, bottomright, bottomleft
-        if (templateIndex > 0)
-        {
-            var topRowIndex = templateIndex - 1;
-            // Top left neighbour
-            if (rowIndex > 0 && template[topRowIndex][rowIndex - 1] != 'W') {
-                corners[0] = true;
-            }
-            // Top right neighbour
-            if (rowIndex < row.Length - 1 && template[topRowIndex][rowIndex + 1] != 'W')
-            {
-                corners[1] = true;
-            }
-            // Top middle neighbour
-            if (template[topRowIndex][rowIndex] != 'W')
-            {
-                sides[0] = true;
-            }
-        }
-        // Left side neighbour
-        if (rowIndex > 0 && template[templateIndex][rowIndex - 1] != 'W')
-        {
-            sides[3] = true;
-        }
-        // Right side neighbour
-        if (rowIndex < row.Length - 1 && template[templateIndex][rowIndex + 1] != 'W')
-        {
-            sides[1] = true;
-        }
-        if (templateIndex < template.Length - 1)
-        {
-            var bottomRowIndex = templateIndex + 1;
-            // Bottom left neighbour
-            if (rowIndex > 0 && template[bottomRowIndex][rowIndex - 1] != 'W') {
-                corners[3] = true;
-            }
-            // Bottom right neighbour
-            if (rowIndex < row.Length - 1 && template[bottomRowIndex][rowIndex + 1] != 'W')
-            {
-                corners[2] = true;
-            }
-            // Bottom middle neighbour
-            if (template[bottomRowIndex][rowIndex] != 'W')
-            {
-                sides[2] = true;
-            }
-        }
-
-        GameObject wallAsset;
-        var rotationSide = Quaternion.identity;
-        var rotationCorner = Quaternion.identity;
-        var sideCount = sides.Count(_ => _);
-        if (sideCount > 0)
-        {
-            switch(sideCount)
-            {
-                case 1:
-                    wallAsset = Wall1Sides;
-                    var index = Array.IndexOf(sides, true);
-                    rotationSide = Quaternion.Euler(0, 0, index * -90);
-                    break;
-                case 2:
-                    wallAsset = Wall2Sides;
-                    if (sides[0] && sides[1]) rotationSide = Quaternion.Euler(0, 0, -90);
-                    if (sides[1] && sides[2]) rotationSide = Quaternion.Euler(0, 0, 180);
-                    if (sides[2] && sides[3]) rotationSide = Quaternion.Euler(0, 0, 90);
-                    break;
-                case 3:
-                    wallAsset = Wall3Sides;
-                    if (sides[0] && sides[1] && sides[2]) rotationSide = Quaternion.Euler(0, 0, -90);
-                    if (sides[1] && sides[2] && sides[3]) rotationSide = Quaternion.Euler(0, 0, 180);
-                    if (sides[2] && sides[3] && sides[0]) rotationSide = Quaternion.Euler(0, 0, 90);
-                    break;
-                case 4:
-                default:
-                    wallAsset = Wall4Sides;
-                    break;
-            }
-            return (wallAsset, rotationSide);
-        }
-        else 
-        {
-            var cornerCount = corners.Count(_ => _);
-            switch(cornerCount)
-            {
-                case 1:
-                    wallAsset = Wall1Corners;
-                    var index = Array.IndexOf(corners, true);
-                    rotationCorner = Quaternion.Euler(0, 0, index * -90);
-                    break;
-                case 2:
-                    wallAsset = Wall2Corners;
-                    if (corners[1] && corners[2]) rotationCorner = Quaternion.Euler(0, 0, -90);
-                    if (corners[2] && corners[3]) rotationCorner = Quaternion.Euler(0, 0, 180);
-                    if (corners[3] && corners[0]) rotationCorner = Quaternion.Euler(0, 0, 90);
-                    break;
-                case 3:
-                    wallAsset = Wall3Corners;
-                    if (corners[1] && corners[2] && corners[3]) rotationSide = Quaternion.Euler(0, 0, -90);
-                    if (corners[2] && corners[3] && corners[0]) rotationSide = Quaternion.Euler(0, 0, 180);
-                    if (corners[3] && corners[0] && corners[1]) rotationSide = Quaternion.Euler(0, 0, 90);
-                    break;
-                case 4:
-                    wallAsset = Wall4Corners;
-                    break;
-                default:
-                    wallAsset = WallInner;
-                    break;
-            }
-            return (wallAsset, rotationCorner);
         }
     }
 
