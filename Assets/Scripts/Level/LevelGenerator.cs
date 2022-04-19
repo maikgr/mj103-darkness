@@ -136,12 +136,10 @@ public class LevelGenerator : MonoBehaviour
                     if (next[0] == row)
                     {
                         isPathing = false;
+                        templateNumber = endingTemplates[GetRandomIndex(endingTemplates.Length)];
                     }
-                    // Check if next cell is already filled
-                    else if (levelTemplate[next[0]][next[1]] != -1) break;
-
                     // If this room is a starting room
-                    if (current[0] == 0 && current[1] == startingIndex)
+                    else if (current[0] == 0 && current[1] == startingIndex)
                     {
                         templateNumber = startingTemplates[GetRandomIndex(startingTemplates.Length)];
                     }
