@@ -51,13 +51,14 @@ public class LevelGenerator : MonoBehaviour
     **/
     private void GenerateLevel(int row, int column)
     {
-        var levelTemplate = GenerateLevelTemplate(row, column);
-        var translatedTemplate = TranslateLevelTemplate(levelTemplate.Item1, levelTemplate.Item2);
+        var levelTemplate = GenerateLevelTemplatePath(row, column);
+        levelTemplate = GenerateBlockingPath(levelTemplate);
+        var translatedTemplate = TranslateLevelTemplate(levelTemplate);
         var merged = MergeTemplate(translatedTemplate);
         RenderTemplate(new Vector2(0, 0), merged);
     }
 
-    private (int[][], int) GenerateLevelTemplate(int row, int column)
+    private int[][] GenerateLevelTemplatePath(int row, int column)
     {
         var levelTemplate = Enumerable.Range(0, row).Select(_ => Enumerable.Range(0, column).Select(_ => -1).ToArray()).ToArray();
         var startingIndex = GetRandomIndex(row);
@@ -65,11 +66,13 @@ public class LevelGenerator : MonoBehaviour
         var prev = new int[] { current[0], current[1] };
         var next = new int[] { current[0], current[1] };
         var isPathing = true;
-
+        var pathTemplates = new int[] { 20, 30, 40, 50 };
+        var startingTemplates = new int[] { 21, 31, 41, 51 };
+        var endingTemplates = new int[] { 22, 32, 42, 52 };
         while(isPathing)
         {
             var direction = GetRandomIndex(3); // 0 go left, 1 go right, 2 go down
-            var currentTemplate = UnityEngine.Random.Range(2, 6);
+            var templateNumber = pathTemplates[GetRandomIndex(pathTemplates.Length)];
             switch(direction)
             {
                 case 0: // go left
@@ -80,15 +83,20 @@ public class LevelGenerator : MonoBehaviour
                     next = new int[] { current[0], current[1] - 1 };
                     if (levelTemplate[next[0]][next[1]] != -1) break;
 
-                    // If this room was accessed from previous row
-                    if (prev[0] < current[0])
+                    // If this room is a starting room
+                    if (current[0] == 0 && current[1] == startingIndex)
                     {
-                        var choices = new int[] { 3, 5 };
-                        currentTemplate = choices[GetRandomIndex(choices.Length)];
+                        templateNumber = startingTemplates[GetRandomIndex(startingTemplates.Length)];
                     }
-
+                    // If this room was accessed from previous row
+                    else if (prev[0] < current[0])
+                    {
+                        var choices = new int[] { 30, 50 };
+                        templateNumber = choices[GetRandomIndex(choices.Length)];
+                    }
+                    
                     // Place template on current index
-                    levelTemplate[current[0]][current[1]] = currentTemplate;
+                    levelTemplate[current[0]][current[1]] = templateNumber;
 
                     // Move to next index
                     prev = new int[] { current[0], current[1] };
@@ -102,15 +110,20 @@ public class LevelGenerator : MonoBehaviour
                     next = new int[] { current[0], current[1] + 1 };
                     if (levelTemplate[next[0]][next[1]] != -1) break;
     
-                    // If this room was accessed from previous row
-                    if (prev[0] < current[0])
+                    // If this room is a starting room
+                    if (current[0] == 0 && current[1] == startingIndex)
                     {
-                        var choices = new int[] { 3, 5 };
-                        currentTemplate = choices[GetRandomIndex(choices.Length)];
+                        templateNumber = startingTemplates[GetRandomIndex(startingTemplates.Length)];
+                    }
+                    // If this room was accessed from previous row
+                    else if (prev[0] < current[0])
+                    {
+                        var choices = new int[] { 30, 50 };
+                        templateNumber = choices[GetRandomIndex(choices.Length)];
                     }
 
                     // Place template on current index
-                    levelTemplate[current[0]][current[1]] = currentTemplate;
+                    levelTemplate[current[0]][current[1]] = templateNumber;
 
                     // Move to next index
                     prev = new int[] { current[0], current[1] };
@@ -127,20 +140,25 @@ public class LevelGenerator : MonoBehaviour
                     // Check if next cell is already filled
                     else if (levelTemplate[next[0]][next[1]] != -1) break;
 
-                    // If this room was accessed from previous row
-                    if (prev[0] < current[0])
+                    // If this room is a starting room
+                    if (current[0] == 0 && current[1] == startingIndex)
                     {
-                        currentTemplate = 5;
+                        templateNumber = startingTemplates[GetRandomIndex(startingTemplates.Length)];
+                    }
+                    // If this room was accessed from previous row
+                    else if (prev[0] < current[0])
+                    {
+                        templateNumber = 50;
                     }
                     // Make sure template can go down
-                    else if (currentTemplate != 4 && currentTemplate != 5)
+                    else if (templateNumber != 40 && templateNumber != 50)
                     {
-                        var choices = new int[] { 4, 5 };
-                        currentTemplate = choices[GetRandomIndex(choices.Length)];
+                        var choices = new int[] { 40, 50 };
+                        templateNumber = choices[GetRandomIndex(choices.Length)];
                     }
 
                     // Place template on current index
-                    levelTemplate[current[0]][current[1]] = currentTemplate;
+                    levelTemplate[current[0]][current[1]] = templateNumber;
 
                     // Move to next index
                     prev = new int[] { current[0], current[1] };
@@ -148,22 +166,49 @@ public class LevelGenerator : MonoBehaviour
                     break;
             }
         }
+        return levelTemplate;
+    }
 
+    private int[][] GenerateBlockingPath(int[][] levelTemplate)
+    {
+        var topPathNumbers = new int[] { 30, 50 };
+        var bottomPathNumbers = new int[] { 40, 50 };
+        var sidePathNumbers = new int[] { 20, 21, 22, 30, 31, 32, 40, 41, 42, 50, 51, 52 };
         for(var i = 0; i < levelTemplate.Length; ++i)
         {
             for(var j = 0; j < levelTemplate[i].Length; ++j)
             {
-                if (levelTemplate[i][j] == -1)
+                if (levelTemplate[i][j] != -1) continue;
+                // Top neighbour
+                if (i > 0 && bottomPathNumbers.Contains(levelTemplate[i - 1][j]))
                 {
-                    levelTemplate[i][j] = GetRandomIndex(5);
+                    levelTemplate[i][j] = 10;
+                }
+                // Right neighbour
+                else if (j < levelTemplate[i].Length - 1 && sidePathNumbers.Contains(levelTemplate[i][j + 1]))
+                {
+                    levelTemplate[i][j] = 11;
+                }
+                // Bottom neighbour
+                else if (i < levelTemplate.Length - 1 && topPathNumbers.Contains(levelTemplate[i + 1][j]))
+                {
+                    levelTemplate[i][j] = 12;
+                }
+                // Left neighbour
+                else if (j > 0 && sidePathNumbers.Contains(levelTemplate[i][j - 1]))
+                {
+                    levelTemplate[i][j] = 13;
+                }
+                else
+                {
+                    levelTemplate[i][j] = 0;
                 }
             }
         }
-
-        return (levelTemplate, startingIndex);
+        return levelTemplate;
     }
 
-    private string[][][] TranslateLevelTemplate(int[][] levelTemplate, int startingIndex)
+    private string[][][] TranslateLevelTemplate(int[][] levelTemplate)
     {
         var translatedTemplates = new List<string[][]>();
         for(var rowIdx = 0; rowIdx < levelTemplate.Length; ++rowIdx)
@@ -174,20 +219,6 @@ public class LevelGenerator : MonoBehaviour
             {
                 var rooms = roomTemplates.Single(r => r.Type == row[colIdx]).Templates.ToArray();
                 var room = (string[])rooms[GetRandomIndex(rooms.Length)].Clone();
-                if (rowIdx == 0 && colIdx == startingIndex)
-                {
-                    for(var roomIdx = 0; roomIdx < room.Length; ++roomIdx)
-                    {
-                        var eIndex = room[roomIdx].IndexOf('E');
-                        if(eIndex > 0)
-                        {
-                            var sb = new StringBuilder(room[roomIdx]);
-                            sb[eIndex] = 'P';
-                            room[roomIdx] = sb.ToString();
-                            break;
-                        }
-                    }
-                }
                 transRow.Add(room);
             }
             translatedTemplates.Add(transRow.ToArray());

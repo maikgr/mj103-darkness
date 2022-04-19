@@ -3,19 +3,48 @@
     "type": 0,
     "templates":[
       [
-        "WWEEWWWW",
+        "WWWWWWWW",
+        "WWWWWWWW",
+        "WWWWWWWW",
+        "WWWWWWWW",
+        "WWWWWWWW",
+        "WWWWWWWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWWEEWWW",
+        "WWEEEEWW",
+        "WWEEEEWW",
+        "WWWEEWWW",
+        "WWWWWWWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WEEEEEEW",
+        "WEEWWEEW",
+        "WEEWWEEW",
+        "WEEEEEEW",
+        "WWWWWWWW"
+      ]
+    ]
+  },
+  {
+    "type": 10,
+    "templates":[
+      [
+        "WWEEEEWW",
         "WWEEEWWW",
-        "WWEWWWEE",
-        "WWEWWWEE",
-        "WWEEWWEE",
+        "WWEEEWWW",
+        "WWEEEWWW",
+        "WWEEEWWW",
         "WWWWWWWW"
       ],
       [
         "WWWEEWWW",
         "WWEEWWWW",
-        "EWWEEWWE",
-        "EWWEWWEE",
-        "EWWWWWWW",
+        "WWWEEWWW",
+        "WWWEWWWW",
+        "WWEEEEWW",
         "WWWWWWWW"
       ],
       [
@@ -24,20 +53,20 @@
         "WWEWWWWW",
         "WWEEWEWW",
         "WWWWEEWW",
-        "WWEEEWWW"
+        "WWWWWWWW"
       ],
       [
+        "WEEEEEWW",
+        "WEEEEEWW",
+        "WWWEWWWW",
         "WWWEEEWW",
-        "EEWEEEWW",
-        "EWWEWWWW",
-        "WWWWWWWW",
-        "WWEEEEWW",
-        "WWEEWWWW"
+        "WEEEEEEW",
+        "WWWWWWWW"
       ]
     ]
   },
   {
-    "type": 1,
+    "type": 11,
     "templates":[
       [
         "WWWWWWWW",
@@ -50,31 +79,105 @@
       [
         "WWWWWWWW",
         "WWEEWWWW",
-        "EWWEEWWE",
-        "EEEEEWEE",
-        "EWWWEWWW",
+        "WWWEEWWE",
+        "WWEEEEEE",
+        "WWWWEWWW",
         "WWWWWWWW"
       ],
       [
         "WWWWWWWW",
         "WWEWWWWW",
-        "WWEEEEWW",
+        "WWEEEEEE",
+        "WWEEWEEE",
         "WWEEWEWW",
-        "WWEEWEWW",
-        "WWEEWWWW"
+        "WWWWWWWW"
       ],
       [
-        "WWWEEEWW",
-        "WWWWWEWW",
-        "EWWEWWWW",
-        "EEEEWWWW",
-        "WWEEEEWW",
+        "WWWWWWWW",
+        "WWWWWEEE",
+        "WWEEEEEE",
+        "WWEWWWEE",
+        "WWEEWWWW",
         "WWWWWWWW"
       ]
     ]
   },
   {
-    "type": 2,
+    "type": 12,
+    "templates": [
+      [
+        "WWWWWWWW",
+        "WWWEEEWW",
+        "WWEEEEEW",
+        "WEEEEEEW",
+        "WWWWEEWW",
+        "WWEEEEEW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWWEEWWW",
+        "WWWEEEWW",
+        "WEEEEWWW",
+        "WWEEWWWW",
+        "WWEEEWWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWWEEEEW",
+        "EEEEEWWW",
+        "EEEEWWEW",
+        "WWEEEEEW",
+        "WWEEEEEW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWWEEEWW",
+        "WWWEEEWW",
+        "WWEEEEWW",
+        "WWEEEEWW",
+        "WWEEEEWW"
+      ]
+    ]
+  },
+  {
+    "type": 13,
+    "templates":[
+      [
+        "WWWWWWWW",
+        "WWWEEWWW",
+        "EEEEEEWW",
+        "EEEEEEWW",
+        "WWEEEEEW",
+        "WWWWWWWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWEEEWWW",
+        "EEEEEEWW",
+        "EEEEEWWW",
+        "WWWWWWWW",
+        "WWWWWWWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWEEWWWW",
+        "EWEEEEWW",
+        "EEEEWEWW",
+        "EEEEWEWW",
+        "WWWWWWWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWEEEEWW",
+        "EEEEWWWW",
+        "EEEEWWWW",
+        "WWEEEEEW",
+        "WWWWWWWW"
+      ]
+    ]
+  },
+  {
+    "type": 20,
     "templates":[
       [
         "WWWWWWWW",
@@ -111,7 +214,81 @@
     ]
   },
   {
-    "type": 3,
+    "type": 21,
+    "templates":[
+      [
+        "WWWWWWWW",
+        "WWWEPWWW",
+        "WWEEEEEE",
+        "EEEEEEEE",
+        "WWEEEEEE",
+        "WWWWWWWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWEEEEEE",
+        "EEEPEEEE",
+        "EEEEEWWE",
+        "EWWWEEWW",
+        "WWWWWWWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWPEWWWW",
+        "EWEEEEWE",
+        "EEEEWEEE",
+        "WWEEWEEE",
+        "WWWWWWWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWEEEPWW",
+        "EEEEWWWE",
+        "EEEEWWEE",
+        "WWEEEEEE",
+        "WWWWWWWW"
+      ]
+    ]
+  },
+  {
+    "type": 22,
+    "templates":[
+      [
+        "WWWWWWWW",
+        "WWWEEWWW",
+        "WWEEEEEE",
+        "EEEEEEEE",
+        "WWEEEEEE",
+        "WWWWXWWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWEEEEEE",
+        "EEEEEEEE",
+        "EEEEEWWE",
+        "EWWWEEWW",
+        "WWWWWXWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWEEWWWW",
+        "EWEEEEWE",
+        "EEEEWEEE",
+        "WWEEWEEE",
+        "WWXWWWWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWEEEEWW",
+        "EEEEWWWE",
+        "EEEEWWEE",
+        "WWEEEEEE",
+        "WWWWXWWW"
+      ]
+    ]
+  },
+  {
+    "type": 30,
     "templates": [
       [
         "WWEEEEWW",
@@ -148,10 +325,84 @@
     ]
   },
   {
-    "type": 4,
+    "type": 31,
     "templates": [
       [
-        "WWWEWWWW",
+        "WWEEEEWW",
+        "WWWEEEWW",
+        "EEEEEEEE",
+        "EEEEEEEE",
+        "WWWWPEWW",
+        "WWWWWWWW"
+      ],
+      [
+        "WWEEEWWW",
+        "WWWEEWWW",
+        "EWWEEEEE",
+        "EEEEEWEE",
+        "WWEPWWWW",
+        "WWWWWWWW"
+      ],
+      [
+        "WWEEEEWW",
+        "WWWEEEPW",
+        "EEEEEWWE",
+        "EEEEWWEE",
+        "WWEEEEEE",
+        "WWWWWWWW"
+      ],
+      [
+        "WEEEEEEE",
+        "WWWEEEWW",
+        "EEWEEEEE",
+        "EEEEEEEE",
+        "WWEEPEWW",
+        "WWWWWWWW"
+      ]
+    ]
+  },
+  {
+    "type": 32,
+    "templates": [
+      [
+        "WWEEEEWW",
+        "WWWEEEWW",
+        "EEEEEEEE",
+        "EEEEEEEE",
+        "WWWWEEWW",
+        "WWWWXWWW"
+      ],
+      [
+        "WWEEEWWW",
+        "WWWEEWWW",
+        "EWWEEEEE",
+        "EEEEEWEE",
+        "WWEEWWWW",
+        "WWWXWWWW"
+      ],
+      [
+        "WWEEEEWW",
+        "WWWEEEEW",
+        "EEEEEWWE",
+        "EEEEWWEE",
+        "WWEEEEEE",
+        "WWWXWWWW"
+      ],
+      [
+        "WEEEEEEE",
+        "WWWEEEWW",
+        "EEWEEEEE",
+        "EEEEEEEE",
+        "WWEEEEWW",
+        "WWWWXWWW"
+      ]
+    ]
+  },
+  {
+    "type": 40,
+    "templates": [
+      [
+        "WWWWWWWW",
         "WWWWWEWW",
         "EEWWEEEE",
         "EEEEEEEE",
@@ -175,7 +426,7 @@
         "WWEEEWWW"
       ],
       [
-        "WEWWWWWW",
+        "WWWWWWWW",
         "WWWEEEWW",
         "EEWEEEEE",
         "EEEEEEEE",
@@ -185,11 +436,85 @@
     ]
   },
   {
-    "type": 5,
+    "type": 41,
+    "templates": [
+      [
+        "WWWWWWWW",
+        "WWWWWPWW",
+        "EEWWEEEE",
+        "EEEEEEEE",
+        "WWEEEEWW",
+        "WWWEEWWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWWEPWWW",
+        "EWWEEEEE",
+        "EEEEEWEE",
+        "WWEEWWWW",
+        "WWWEEEWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWWPEWWW",
+        "EEEEEEEE",
+        "EEEEWWEE",
+        "WWEWWWEE",
+        "WWEEEWWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWWEPEWW",
+        "EEWEEEEE",
+        "EEEEEEEE",
+        "WWEEEEWW",
+        "WEEEEEWW"
+      ]
+    ]
+  },
+  {
+    "type": 42,
+    "templates": [
+      [
+        "WWWWWWWW",
+        "WWWWWEWW",
+        "EEWWEEEE",
+        "EEEEEEEE",
+        "WWEEEEWW",
+        "WWWWXWWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWWEEWWW",
+        "EWWEEEEE",
+        "EEEEEWEE",
+        "WWEEWWWW",
+        "WWWXWWWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWWEEWWW",
+        "EEEEEEEE",
+        "EEEEWWEE",
+        "WWEWWWEE",
+        "WWXWWWWW"
+      ],
+      [
+        "WWWWWWWW",
+        "WWWEEEWW",
+        "EEWEEEEE",
+        "EEEEEEEE",
+        "WWEEEEWW",
+        "WWXWWWWW"
+      ]
+    ]
+  },
+  {
+    "type": 50,
     "templates": [
       [
         "WWWEEEEW",
-        "WWWEWEWW",
+        "WWWEWWWW",
         "EEWEEEEE",
         "EEEEEEEE",
         "WWEEEEWW",
@@ -218,6 +543,80 @@
         "EEEEEEEE",
         "WEEEEEEW",
         "WEEEEEEW"
+      ]
+    ]
+  },
+  {
+    "type": 51,
+    "templates": [
+      [
+        "WWWEEEPW",
+        "WWWEWWWW",
+        "EEWEEEEE",
+        "EEEEEEEE",
+        "WWEEEEWW",
+        "WWEEEEWW"
+      ],
+      [
+        "WPEEEWWW",
+        "WWWEEWWW",
+        "EWWEEEEE",
+        "EEWWEWEE",
+        "WEEEEWWW",
+        "WWWEEEWW"
+      ],
+      [
+        "WEEEEEPW",
+        "WWWEEWWW",
+        "EEEEEEEE",
+        "EEEEWWEE",
+        "WWEEEWEE",
+        "WWEEEEEW"
+      ],
+      [
+        "WEEEEEEW",
+        "WPEEWWEW",
+        "EEEEWEEE",
+        "EEEEEEEE",
+        "WEEEEEEW",
+        "WEEEEEEW"
+      ]
+    ]
+  },
+  {
+    "type": 52,
+    "templates": [
+      [
+        "WWWEEEEW",
+        "WWWEWWWW",
+        "EEWEEEEE",
+        "EEEEEEEE",
+        "WWEEEEWW",
+        "WWWWXWWW"
+      ],
+      [
+        "WEEEEWWW",
+        "WWWEEWWW",
+        "EWWEEEEE",
+        "EEWWEWEE",
+        "WEEEEWWW",
+        "WWWWXWWW"
+      ],
+      [
+        "WEEEEEEW",
+        "WWWEEWWW",
+        "EEEEEEEE",
+        "EEEEWWEE",
+        "WWEEEWEE",
+        "WWWWWWXW"
+      ],
+      [
+        "WEEEEEEW",
+        "WEEEWWEW",
+        "EEEEWEEE",
+        "EEEEEEEE",
+        "WEEEEEEW",
+        "WWWXWWWW"
       ]
     ]
   }
