@@ -1,4 +1,4 @@
-using System;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -166,13 +166,29 @@ public class LevelGenerator : MonoBehaviour
     private string[][][] TranslateLevelTemplate(int[][] levelTemplate, int startingIndex)
     {
         var translatedTemplates = new List<string[][]>();
-        foreach(var row in levelTemplate)
+        for(var rowIdx = 0; rowIdx < levelTemplate.Length; ++rowIdx)
         {
+            var row = levelTemplate[rowIdx];
             var transRow = new List<string[]>();
-            foreach(var col in row)
+            for(var colIdx = 0; colIdx < row.Length; ++colIdx)
             {
-                var rooms = roomTemplates.Single(r => r.Type == col).Templates.ToArray();
-                transRow.Add(rooms[GetRandomIndex(rooms.Length)]);
+                var rooms = roomTemplates.Single(r => r.Type == row[colIdx]).Templates.ToArray();
+                var room = (string[])rooms[GetRandomIndex(rooms.Length)].Clone();
+                if (rowIdx == 0 && colIdx == startingIndex)
+                {
+                    for(var roomIdx = 0; roomIdx < room.Length; ++roomIdx)
+                    {
+                        var eIndex = room[roomIdx].IndexOf('E');
+                        if(eIndex > 0)
+                        {
+                            var sb = new StringBuilder(room[roomIdx]);
+                            sb[eIndex] = 'P';
+                            room[roomIdx] = sb.ToString();
+                            break;
+                        }
+                    }
+                }
+                transRow.Add(room);
             }
             translatedTemplates.Add(transRow.ToArray());
         }
