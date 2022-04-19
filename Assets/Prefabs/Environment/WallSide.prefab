@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7170343025713525830}
   - component: {fileID: 2584337821032302656}
   - component: {fileID: 5961071138792100106}
-  - component: {fileID: 6913105134409560821}
   m_Layer: 0
   m_Name: WallSide
   m_TagString: Untagged
@@ -99,7 +98,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2029603016695656400, guid: a1dc6726db19c0f4fbe5ae7b70bb967d, type: 3}
+  m_Sprite: {fileID: -6113606119065762621, guid: 8563beec3ec215644ae7e14c0c0752c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,29 +109,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6913105134409560821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7170343025713525829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000
-  m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: 0.4, z: 0}
-  - {x: -0.5, y: 0.4, z: 0}
-  m_ShapePathHash: -1906480883
-  m_Mesh: {fileID: 0}
-  m_InstanceId: -35600
