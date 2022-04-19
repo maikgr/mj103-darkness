@@ -215,8 +215,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 984184633}
-  - component: {fileID: 984184634}
   - component: {fileID: 984184635}
+  - component: {fileID: 984184636}
+  - component: {fileID: 984184634}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: GameController
@@ -254,6 +255,7 @@ MonoBehaviour:
   PlayerAsset: {fileID: 4958018913491840405, guid: cb00c84348a34754e96a6a6f57c43f9b, type: 3}
   ExitAsset: {fileID: 5057055745281124227, guid: 8880f8c285b0c7a42b6ae8c4c7429150, type: 3}
   WallObjectGenerator: {fileID: 984184635}
+  ExitObjectGenerator: {fileID: 984184636}
 --- !u!114 &984184635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,3 +271,16 @@ MonoBehaviour:
   WallBasePrefab: {fileID: 162923817060587987, guid: 870444053a7522e4aa7b78acfc4d16f2, type: 3}
   WallSidePrefab: {fileID: 7170343025713525829, guid: fe251cddf057e9f4ab6a036f4e40a3ea, type: 3}
   WallCornerPrefab: {fileID: 7211572234812643602, guid: 052de65b8e32e6b4cb5d1ead62e75417, type: 3}
+--- !u!114 &984184636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984184632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c446b3d23ef40469c2a84b85b31bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExitPrefab: {fileID: 5057055745281124227, guid: 8880f8c285b0c7a42b6ae8c4c7429150, type: 3}

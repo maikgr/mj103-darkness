@@ -10,6 +10,7 @@ public class LevelGenerator : MonoBehaviour
     public GameObject PlayerAsset;
     public GameObject ExitAsset;
     public WallObjectGenerator WallObjectGenerator;
+    public ExitObjectGenerator ExitObjectGenerator;
     private List<GameObject> generatedAssets = new List<GameObject>();
     private bool isGenerating = false;
 
@@ -91,8 +92,9 @@ public class LevelGenerator : MonoBehaviour
                 }
                 else if (cell == 'X')
                 {
+                    var exit = ExitObjectGenerator.GetExitObject(template, i, j);
                     GenerateAsset(FloorAsset, currentPoint);
-                    GenerateAsset(ExitAsset, currentPoint);
+                    GenerateAsset(exit, currentPoint);
                 }
 
                 currentPoint.x += 1;
@@ -273,9 +275,9 @@ public class LevelGenerator : MonoBehaviour
                     {
                         "EEEEEEWW",
                         "EEWWWWWW",
-                        "EEEEEEEX",
-                        "EEEWWWWW",
-                        "EEWWWWWW",
+                        "EEEEEEEW",
+                        "EEWWEWWW",
+                        "EEWWEEEX",
                         "WWWWWWWW",
                     },
                     new string[]
@@ -283,9 +285,9 @@ public class LevelGenerator : MonoBehaviour
                         "WWWEEWWW",
                         "EEWWEEWW",
                         "EEEEEEWW",
-                        "EEEEEEEX",
-                        "EWWWWWWW",
-                        "WWWWWWWW",
+                        "EEEEEEEW",
+                        "EWWEWWWW",
+                        "WWWXWWWW",
                     },
                     new string[]
                     {
@@ -300,8 +302,8 @@ public class LevelGenerator : MonoBehaviour
                     {
                         "EEWEEEWW",
                         "EEWWWEEW",
-                        "EWWWWEEW",
-                        "EEWWWEEX",
+                        "EWWXWEEW",
+                        "EEWEWEEW",
                         "EEEEEEEW",
                         "WWWWWWWW",
                     },
