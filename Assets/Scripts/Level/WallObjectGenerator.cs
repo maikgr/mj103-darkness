@@ -37,8 +37,6 @@ public class WallObjectGenerator : MonoBehaviour
     {
         var wallAsset = new GameObject(index);
 
-        var wallBase = GameObject.Instantiate(WallBasePrefab, Vector2.zero, Quaternion.identity);
-        wallBase.transform.SetParent(wallAsset.transform);
         // Remove corners when the related sides exist
         if (index.Contains("1"))
         {
@@ -95,6 +93,11 @@ public class WallObjectGenerator : MonoBehaviour
             var corner = GameObject.Instantiate(WallCornerPrefab, Vector2.zero, Quaternion.identity);
             corner.transform.localRotation = Quaternion.Euler(0, 0, 180);
             corner.transform.SetParent(wallAsset.transform);
+        }
+        if (!string.IsNullOrEmpty(index))
+        {
+            var wallBase = GameObject.Instantiate(WallBasePrefab, Vector2.zero, Quaternion.identity);
+            wallBase.transform.SetParent(wallAsset.transform);
         }
         wallAsset.transform.SetParent(poolParent.transform);
         return wallAsset;
