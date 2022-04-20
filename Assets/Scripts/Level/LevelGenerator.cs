@@ -18,6 +18,7 @@ public class LevelGenerator : MonoBehaviour
     private List<GameObject> generatedAssets = new List<GameObject>();
     private bool isGenerating = false;
     private IEnumerable<RoomTemplate> roomTemplates;
+    public LevelInstance levelInstance { get; private set; }
 
     void Start()
     {
@@ -98,18 +99,19 @@ public class LevelGenerator : MonoBehaviour
                     next = new int[] { current[0], current[1] - 1 };
                     if (levelTemplate[next[0]][next[1]] != -1) break;
 
-                    // If this room is a starting room
-                    if (current[0] == 0 && current[1] == startingIndex)
-                    {
-                        templateNumber = startingTemplates[GetRandomIndex(startingTemplates.Length)];
-                    }
                     // If this room was accessed from previous row
-                    else if (prev[0] < current[0])
+                    if (prev[0] < current[0])
                     {
                         var choices = new int[] { 30, 50 };
                         templateNumber = choices[GetRandomIndex(choices.Length)];
                     }
                     
+                    // If this room is a starting room
+                    if (current[0] == 0 && current[1] == startingIndex)
+                    {
+                        templateNumber = templateNumber + 1;
+                    }
+
                     // Place template on current index
                     levelTemplate[current[0]][current[1]] = templateNumber;
 
@@ -124,17 +126,18 @@ public class LevelGenerator : MonoBehaviour
                     // Check if next cell is already filled
                     next = new int[] { current[0], current[1] + 1 };
                     if (levelTemplate[next[0]][next[1]] != -1) break;
+
+                    // If this room was accessed from previous row
+                    if (prev[0] < current[0])
+                    {
+                        var choices = new int[] { 30, 50 };
+                        templateNumber = choices[GetRandomIndex(choices.Length)];
+                    }
     
                     // If this room is a starting room
                     if (current[0] == 0 && current[1] == startingIndex)
                     {
-                        templateNumber = startingTemplates[GetRandomIndex(startingTemplates.Length)];
-                    }
-                    // If this room was accessed from previous row
-                    else if (prev[0] < current[0])
-                    {
-                        var choices = new int[] { 30, 50 };
-                        templateNumber = choices[GetRandomIndex(choices.Length)];
+                        templateNumber = templateNumber + 1;
                     }
 
                     // Place template on current index
@@ -147,19 +150,8 @@ public class LevelGenerator : MonoBehaviour
                 case 2: // go down
                     next = new int[] { current[0] + 1, current[1] };
 
-                    // Consider pathing finished
-                    if (next[0] == row)
-                    {
-                        isPathing = false;
-                        templateNumber = endingTemplates[GetRandomIndex(endingTemplates.Length)];
-                    }
-                    // If this room is a starting room
-                    else if (current[0] == 0 && current[1] == startingIndex)
-                    {
-                        templateNumber = startingTemplates[GetRandomIndex(startingTemplates.Length)];
-                    }
                     // If this room was accessed from previous row
-                    else if (prev[0] < current[0])
+                    if (prev[0] < current[0])
                     {
                         templateNumber = 50;
                     }
@@ -168,6 +160,18 @@ public class LevelGenerator : MonoBehaviour
                     {
                         var choices = new int[] { 40, 50 };
                         templateNumber = choices[GetRandomIndex(choices.Length)];
+                    }
+
+                    // If this room is a starting room
+                    if (current[0] == 0 && current[1] == startingIndex)
+                    {
+                        templateNumber = templateNumber + 1;
+                    }
+                    // Consider pathing finished
+                    else if (next[0] == row)
+                    {
+                        isPathing = false;
+                        templateNumber = templateNumber + 2;
                     }
 
                     // Place template on current index
