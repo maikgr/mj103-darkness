@@ -55,7 +55,22 @@ public class LevelGenerator : MonoBehaviour
         levelTemplate = GenerateBlockingPath(levelTemplate);
         var translatedTemplate = TranslateLevelTemplate(levelTemplate);
         var merged = MergeTemplate(translatedTemplate);
-        RenderTemplate(new Vector2(0, 0), merged);
+        var borderedTemplate = AddLevelBorder(merged);
+        levelInstance = new LevelInstance(merged[0].Length, merged.Length);
+        RenderTemplate(new Vector2(0, 0), borderedTemplate);
+    }
+
+    private string[] AddLevelBorder(string[] mergedTemplate)
+    {
+        var bordered = new List<string>();
+        var horizontalBorder = string.Join("", Enumerable.Repeat('W', mergedTemplate[0].Length + 2));
+        bordered.Add(horizontalBorder);
+        for(var i = 0; i < mergedTemplate.Length; ++i)
+        {
+            bordered.Add("W" + mergedTemplate[i] + "W");
+        }
+        bordered.Add(horizontalBorder);
+        return bordered.ToArray();
     }
 
     private int[][] GenerateLevelTemplatePath(int row, int column)
