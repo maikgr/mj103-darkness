@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: 8563beec3ec215644ae7e14c0c0752c9
+guid: 4438121b988841b4e8d1e3f2c96f806d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4804446361586417100
-    second: map_0
+      213: -9130327353728628328
+    second: hand1_0
   - first:
-      213: -7688356529983298438
-    second: map_1
+      213: 1869063827998529412
+    second: hand1_1
   - first:
-      213: -6113606119065762621
-    second: map_2
-  - first:
-      213: -1849047750971238059
-    second: map_3
-  - first:
-      213: -3632615384808042850
-    second: map_4
+      213: 2449181008312871255
+    second: hand1_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -118,106 +112,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: map_0
+      name: hand1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 400
-        width: 200
+        width: 500
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ccdb6c4c282dca240800000000000000
-      internalID: 4804446361586417100
+      spriteID: 89909f575af8a4180800000000000000
+      internalID: -9130327353728628328
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_1
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 400
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a746acb78787d4590800000000000000
-      internalID: -7688356529983298438
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: map_2
+      name: hand1_1
       rect:
         serializedVersion: 2
         x: 0
         y: 200
-        width: 200
+        width: 500
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c44e6040ab182ba0800000000000000
-      internalID: -6113606119065762621
+      spriteID: 487526a16af30f910800000000000000
+      internalID: 1869063827998529412
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: map_3
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 200
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 559df9efddcd656e0800000000000000
-      internalID: -1849047750971238059
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: map_4
+      name: hand1_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 200
+        width: 500
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9ec5eecd8b569dc0800000000000000
-      internalID: -3632615384808042850
+      spriteID: 7592f17962d3df120800000000000000
+      internalID: 2449181008312871255
       vertices: []
       indices: 
       edges: []
@@ -231,9 +183,7 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {fileID: 2800000, guid: bbbccfc91de67cb4f82a3e60f80c2f10, type: 3}
-      name: _NormalMap
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
