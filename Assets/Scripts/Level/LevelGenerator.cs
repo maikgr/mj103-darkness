@@ -276,10 +276,6 @@ public class LevelGenerator : MonoBehaviour
                 if (cell == 'W')
                 {
                     var wall = WallObjectGenerator.GetWallObject(template, i, j);
-                    if (wall.GetComponentsInChildren<Transform>().Length <= 1)
-                    {
-                        continue;
-                    }
                     GenerateAsset(wall, currentPoint);
                 }
                 else if (cell == 'E')

@@ -13,6 +13,7 @@ public class WallObjectGenerator : MonoBehaviour
     // 5 6 7
     private IDictionary<string, GameObject> wallObjectPool;
     private GameObject poolParent;
+    private string baseIndex = "W";
 
     void Awake()
     {
@@ -94,7 +95,7 @@ public class WallObjectGenerator : MonoBehaviour
             corner.transform.localRotation = Quaternion.Euler(0, 0, 180);
             corner.transform.SetParent(wallAsset.transform);
         }
-        if (!string.IsNullOrEmpty(index))
+        if (index != baseIndex)
         {
             var wallBase = GameObject.Instantiate(WallBasePrefab, Vector2.zero, Quaternion.identity);
             wallBase.transform.SetParent(wallAsset.transform);
@@ -105,7 +106,7 @@ public class WallObjectGenerator : MonoBehaviour
 
     private string GetWallIndex(string[] template, int rowIndex, int colIndex)
     {
-        var index = "W";
+        var index = baseIndex;
         var row = template[rowIndex];
         if (rowIndex > 0)
         {
