@@ -11,14 +11,14 @@ public class PlayerController : MonoBehaviour
     public Light2D flickeringLight;
     private LevelGenerator levelGenerator;
     private float baseOuterRadius;
-    private float baseInnerRadius;
+    private bool isHurtFlicker;
+    private float unhurtOuterRadius;
 
     // Start is called before the first frame update
     void Start()
     {
         levelGenerator = GameObject.FindGameObjectWithTag("GameController").GetComponent<LevelGenerator>();
         baseOuterRadius = stableLight.pointLightOuterRadius + 0;
-        baseInnerRadius = stableLight.pointLightInnerRadius + 0;
         StartCoroutine(LightFlickerCoroutine());
     }
 
@@ -35,21 +35,41 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Fire1"))
         {
             stableLight.pointLightOuterRadius += Time.deltaTime * 5;
-            baseOuterRadius = stableLight.pointLightOuterRadius + 0;
         }
         else if (Input.GetButton("Fire2"))
         {
             stableLight.pointLightOuterRadius -= Time.deltaTime * 5;
-            baseOuterRadius = stableLight.pointLightOuterRadius + 0;
+        }
+
+        if (Input.GetButton("Jump") && !isHurtFlicker)
+        {
+            isHurtFlicker = true;
+            flickeringLight.color = new Color32(219, 47, 47, 255);
+            baseOuterRadius = stableLight.pointLightOuterRadius;
+            stableLight.pointLightOuterRadius -= 0.5f;
+            CameraShakeController.Shake(0.5f, 0.02f);
+        }
+
+        if (isHurtFlicker)
+        {
+            var deltaTime = Time.fixedDeltaTime;
+            flickeringLight.color = new Color(flickeringLight.color.r + deltaTime, flickeringLight.color.g + deltaTime, flickeringLight.color.b + deltaTime);
+            stableLight.pointLightOuterRadius = Mathf.Min(stableLight.pointLightOuterRadius + deltaTime, baseOuterRadius);
+            if (flickeringLight.color.g >= 1f)
+            {
+                flickeringLight.color = Color.white;
+                stableLight.pointLightOuterRadius = baseOuterRadius;
+                isHurtFlicker = false;
+            }
         }
     }
 
     private IEnumerator LightFlickerCoroutine() {
         // Light flickers
         while(true)
-            {
-            flickeringLight.pointLightOuterRadius = baseOuterRadius - Random.Range(0f, flickerOffset);
-            flickeringLight.pointLightInnerRadius = baseInnerRadius - Random.Range(0f, flickerOffset * 3);
+        {
+            flickeringLight.pointLightOuterRadius = stableLight.pointLightOuterRadius - Random.Range(0f, flickerOffset);
+            flickeringLight.pointLightInnerRadius = stableLight.pointLightInnerRadius - Random.Range(0f, flickerOffset * 3);
             yield return new WaitForSeconds(Random.Range(0f, 0.2f));
         }
     }
