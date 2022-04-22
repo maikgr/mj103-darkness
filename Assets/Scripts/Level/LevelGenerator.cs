@@ -26,7 +26,7 @@ public class LevelGenerator : MonoBehaviour
         GenerateLevel(3, 3);
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.R) && !isGenerating)
         {
@@ -276,6 +276,8 @@ public class LevelGenerator : MonoBehaviour
                 if (cell == 'W')
                 {
                     var wall = WallObjectGenerator.GetWallObject(template, i, j);
+                    var floor = FloorObjectGenerator.GetFloorObject();
+                    GenerateAsset(floor, currentPoint);
                     GenerateAsset(wall, currentPoint);
                 }
                 else if (cell == 'E')

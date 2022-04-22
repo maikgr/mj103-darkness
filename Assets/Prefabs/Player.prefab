@@ -3239,6 +3239,9 @@ GameObject:
   - component: {fileID: 4958018913491840411}
   - component: {fileID: 4958018913491840409}
   - component: {fileID: 4958018913491840410}
+  - component: {fileID: 322160495783932930}
+  - component: {fileID: -7946317222010782524}
+  - component: {fileID: -5188072425962459679}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3277,9 +3280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  flickerOffset: 0.1
   stableLight: {fileID: 4311513481852227989}
-  flickeringLight: {fileID: 6614922625706618800}
+  AnimationScriptController: {fileID: 322160495783932930}
 --- !u!58 &4958018913491840409
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3317,6 +3319,51 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &322160495783932930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958018913491840405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3835d20f4276be043a38124da70dd93d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerLightFlicker: {fileID: -7946317222010782524}
+  PlayerLightHurt: {fileID: -5188072425962459679}
+--- !u!114 &-7946317222010782524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958018913491840405}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834ff2b87272dcc4691968fca076a5b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stableLight: {fileID: 4311513481852227989}
+  flickeringLight: {fileID: 6614922625706618800}
+  flickerOffset: 0.08
+--- !u!114 &-5188072425962459679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958018913491840405}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2634a795522404cb18778a578248e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stableLight: {fileID: 4311513481852227989}
+  flickeringLight: {fileID: 6614922625706618800}
+  hurtOffset: 0.5
+  HurtColor: {r: 1, g: 0.26727065, b: 0.25943398, a: 1}
 --- !u!1 &5070572797445985792
 GameObject:
   m_ObjectHideFlags: 0

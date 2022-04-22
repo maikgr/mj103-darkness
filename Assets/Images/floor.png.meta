@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: 4341242654334979365
     second: floor_2
+  - first:
+      213: 1903813881350671106
+    second: floor_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -170,6 +173,27 @@ TextureImporter:
       bones: []
       spriteID: 52d096771313f3c30800000000000000
       internalID: 4341242654334979365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_3
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20b4d5463a4bb6a10800000000000000
+      internalID: 1903813881350671106
       vertices: []
       indices: 
       edges: []

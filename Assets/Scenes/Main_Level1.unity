@@ -377,8 +377,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WallBasePrefab: {fileID: 162923817060587987, guid: 870444053a7522e4aa7b78acfc4d16f2, type: 3}
-  WallSidePrefab: {fileID: 7170343025713525829, guid: fe251cddf057e9f4ab6a036f4e40a3ea, type: 3}
-  WallCornerPrefab: {fileID: 7211572234812643602, guid: 052de65b8e32e6b4cb5d1ead62e75417, type: 3}
+  WallCornerPrefab: {fileID: 3349549546245919918, guid: bfcd948c5fb97464c939b1f4603f36c4, type: 3}
+  WallCornerMask: {fileID: 5642759992872849356, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
+  WallBaseMasks:
+  - {fileID: 7100856339549575628, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
+  - {fileID: 6821505531540592281, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
+  - {fileID: 2602728349407574607, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
+  - {fileID: 3476111024226991014, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
+  WallSidePrefabs:
+  - {fileID: 7170343025713525829, guid: fe251cddf057e9f4ab6a036f4e40a3ea, type: 3}
+  - {fileID: 6599580523373412127, guid: 8779a6fbffc9b174f8da95fb79e77f66, type: 3}
+  - {fileID: 1693685311181106481, guid: 469f4ba195cad02469c69d90def43e82, type: 3}
+  - {fileID: 8703008480324849351, guid: 0e2a23cec1b9ec343893bdb29f3492db, type: 3}
+  WallLightMasks:
+  - {fileID: 3365321274702038899, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
+  - {fileID: 215931885860203917, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
+  - {fileID: 2419055756416327194, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
+  - {fileID: -2647615302047695476, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
 --- !u!114 &984184636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,6 +423,7 @@ MonoBehaviour:
   - {fileID: -4373184736405950995, guid: 30c7da9ad47015b49a0435caf8ba75be, type: 3}
   - {fileID: 4158732434352698325, guid: 30c7da9ad47015b49a0435caf8ba75be, type: 3}
   - {fileID: 4341242654334979365, guid: 30c7da9ad47015b49a0435caf8ba75be, type: 3}
+  - {fileID: 1903813881350671106, guid: 30c7da9ad47015b49a0435caf8ba75be, type: 3}
   FloorPrefab: {fileID: 5501227444829353192, guid: fb7c65ff286b1914895ca0024c9ba054, type: 3}
 --- !u!1 &1227990132
 GameObject:

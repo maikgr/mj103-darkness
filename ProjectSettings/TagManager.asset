@@ -43,3 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: WallMask
+    uniqueID: 3302427959
+    locked: 0
+  - name: WallLightMask
+    uniqueID: 48471511
+    locked: 0

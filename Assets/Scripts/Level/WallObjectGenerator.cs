@@ -4,8 +4,11 @@ using UnityEngine;
 public class WallObjectGenerator : MonoBehaviour
 {
     public GameObject WallBasePrefab;
-    public GameObject WallSidePrefab;
     public GameObject WallCornerPrefab;
+    public Sprite WallCornerMask;
+    public List<Sprite> WallBaseMasks;
+    public List<GameObject> WallSidePrefabs;
+    public List<Sprite> WallLightMasks;
 
     // Dictionary index refers to wall neighbours that has lights
     // 0 1 2
@@ -37,69 +40,85 @@ public class WallObjectGenerator : MonoBehaviour
     private GameObject GeneratePoolItem(string index)
     {
         var wallAsset = new GameObject(index);
+        var sideChildren = new List<(GameObject, Sprite, Sprite, Quaternion)>();
 
         // Remove corners when the related sides exist
         if (index.Contains("1"))
         {
             index = index.Replace("0", string.Empty);
             index = index.Replace("2", string.Empty);
-            var side = GameObject.Instantiate(WallSidePrefab, Vector2.zero, Quaternion.identity);
-            side.transform.SetParent(wallAsset.transform);
+            sideChildren.Add(GetRandomSpriteSet(Quaternion.identity));
         }
         if (index.Contains("3"))
         {
             index = index.Replace("0", string.Empty);
             index = index.Replace("5", string.Empty);
-            var side = GameObject.Instantiate(WallSidePrefab, Vector2.zero, Quaternion.identity);
-            side.transform.localRotation = Quaternion.Euler(0, 0, 90);
-            side.transform.SetParent(wallAsset.transform);
+            sideChildren.Add(GetRandomSpriteSet(Quaternion.Euler(0, 0, 90)));
         }
         if (index.Contains("4"))
         {
             index = index.Replace("2", string.Empty);
             index = index.Replace("7", string.Empty);
-            var side = GameObject.Instantiate(WallSidePrefab, Vector2.zero, Quaternion.identity);
-            side.transform.localRotation = Quaternion.Euler(0, 0, -90);
-            side.transform.SetParent(wallAsset.transform);
+            sideChildren.Add(GetRandomSpriteSet(Quaternion.Euler(0, 0, -90)));
         }
         if (index.Contains("6"))
         {
             index = index.Replace("5", string.Empty);
             index = index.Replace("7", string.Empty);
-            var side = GameObject.Instantiate(WallSidePrefab, Vector2.zero, Quaternion.identity);
-            side.transform.localRotation = Quaternion.Euler(0, 0, 180);
-            side.transform.SetParent(wallAsset.transform);
+            sideChildren.Add(GetRandomSpriteSet(Quaternion.Euler(0, 0, 180)));
         }
 
+        var cornerQuaternions = new List<Quaternion>();
         // Add corners
         if (index.Contains("0"))
         {
-            var corner = GameObject.Instantiate(WallCornerPrefab, Vector2.zero, Quaternion.identity);
-            corner.transform.SetParent(wallAsset.transform);
+            cornerQuaternions.Add(Quaternion.identity);
         }
         if (index.Contains("2"))
         {
-            var corner = GameObject.Instantiate(WallCornerPrefab, Vector2.zero, Quaternion.identity);
-            corner.transform.localRotation = Quaternion.Euler(0, 0, -90);
-            corner.transform.SetParent(wallAsset.transform);
+            cornerQuaternions.Add(Quaternion.Euler(0, 0, -90));
         }
         if (index.Contains("5"))
         {
-            var corner = GameObject.Instantiate(WallCornerPrefab, Vector2.zero, Quaternion.identity);
-            corner.transform.localRotation = Quaternion.Euler(0, 0, 90);
-            corner.transform.SetParent(wallAsset.transform);
+            cornerQuaternions.Add(Quaternion.Euler(0, 0, 90));
         }
         if (index.Contains("7"))
         {
-            var corner = GameObject.Instantiate(WallCornerPrefab, Vector2.zero, Quaternion.identity);
-            corner.transform.localRotation = Quaternion.Euler(0, 0, 180);
-            corner.transform.SetParent(wallAsset.transform);
+            cornerQuaternions.Add(Quaternion.Euler(0, 0, 180));
         }
+
+        var wallBase = GameObject.Instantiate(WallBasePrefab, Vector2.zero, Quaternion.identity);
+        wallBase.transform.SetParent(wallAsset.transform);
+
         if (index != baseIndex)
         {
-            var wallBase = GameObject.Instantiate(WallBasePrefab, Vector2.zero, Quaternion.identity);
-            wallBase.transform.SetParent(wallAsset.transform);
+            foreach((GameObject sidePrefab, Sprite baseMask, Sprite lightMask, Quaternion rotation) child in sideChildren)
+            {
+                var maskObj = new GameObject("mask " + child.rotation.eulerAngles.z);
+                var mask = maskObj.AddComponent<SpriteMask>();
+                mask.sprite = child.baseMask;
+                mask.transform.localRotation = child.rotation;
+                mask.transform.SetParent(wallBase.transform);
+
+                var side = GameObject.Instantiate(child.sidePrefab, Vector2.zero, Quaternion.identity);
+                side.transform.localRotation = child.rotation;
+                side.transform.SetParent(wallBase.transform);
+            }
+
+            foreach(var cornerQ in cornerQuaternions)
+            {
+                var corner = GameObject.Instantiate(WallCornerPrefab, Vector2.zero, Quaternion.identity);
+                corner.transform.localRotation = cornerQ;
+                corner.transform.SetParent(wallBase.transform);
+
+                var maskObj = new GameObject("corner mask " + cornerQ.eulerAngles.z);
+                var mask = maskObj.AddComponent<SpriteMask>();
+                mask.sprite = WallCornerMask;
+                mask.transform.localRotation = cornerQ;
+                mask.transform.SetParent(wallBase.transform);
+            }
         }
+
         wallAsset.transform.SetParent(poolParent.transform);
         return wallAsset;
     }
@@ -154,7 +173,12 @@ public class WallObjectGenerator : MonoBehaviour
                 index += "7";
             }
         }
-
         return index;
+    }
+
+    private (GameObject, Sprite, Sprite, Quaternion) GetRandomSpriteSet(Quaternion rotation)
+    {
+        var index = Random.Range(0, WallSidePrefabs.Count);
+        return (WallSidePrefabs[index], WallBaseMasks[index], WallLightMasks[index], rotation);
     }
 }

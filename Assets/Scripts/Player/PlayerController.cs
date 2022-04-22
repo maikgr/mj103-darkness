@@ -6,13 +6,10 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
-    public float flickerOffset;
     public Light2D stableLight;
-    public Light2D flickeringLight;
+    public PlayerAnimationScriptController AnimationScriptController;
     private LevelGenerator levelGenerator;
     private float baseOuterRadius;
-    private bool isHurtFlicker;
-    private float unhurtOuterRadius;
     private bool canControl = true;
 
     // Start is called before the first frame update
@@ -20,7 +17,7 @@ public class PlayerController : MonoBehaviour
     {
         levelGenerator = GameObject.FindGameObjectWithTag("GameController").GetComponent<LevelGenerator>();
         baseOuterRadius = stableLight.pointLightOuterRadius + 0;
-        StartCoroutine(LightFlickerCoroutine());
+        AnimationScriptController.PlayAnimation(PlayerAnimationName.LightFlicker);
     }
 
     // Update is called once per frame
@@ -76,16 +73,6 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Enemy")
         {
             StartCoroutine(PushPlayerBack(other.transform.position));
-        }
-    }
-
-    private IEnumerator LightFlickerCoroutine() {
-        // Light flickers
-        while(true)
-        {
-            flickeringLight.pointLightOuterRadius = stableLight.pointLightOuterRadius - Random.Range(0f, flickerOffset);
-            flickeringLight.pointLightInnerRadius = stableLight.pointLightInnerRadius - Random.Range(0f, flickerOffset * 3);
-            yield return new WaitForSeconds(Random.Range(0f, 0.2f));
         }
     }
 

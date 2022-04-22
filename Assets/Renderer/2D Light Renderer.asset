@@ -19,7 +19,7 @@ MonoBehaviour:
   m_HDREmulationScale: 1
   m_LightBlendStyles:
   - name: Blend Style 0
-    maskTextureChannel: 1
+    maskTextureChannel: 0
     renderTextureScale: 0.5
     blendMode: 1
     customBlendFactors:
