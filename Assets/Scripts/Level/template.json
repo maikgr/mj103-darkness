@@ -9,22 +9,6 @@
         "WWWWWWWW",
         "WWWWWWWW",
         "WWWWWWWW"
-      ],
-      [
-        "WWWWWWWW",
-        "WWWEEWWW",
-        "WWEEEEWW",
-        "WWEEEEWW",
-        "WWWEEWWW",
-        "WWWWWWWW"
-      ],
-      [
-        "WWWWWWWW",
-        "WEEEEEEW",
-        "WEEWWEEW",
-        "WEEWWEEW",
-        "WEEEEEEW",
-        "WWWWWWWW"
       ]
     ]
   },
@@ -34,7 +18,7 @@
       [
         "WWEEEEWW",
         "WWEEEWWW",
-        "WWEEEWWW",
+        "WWTEEWWW",
         "WWEEEWWW",
         "WWEEEWWW",
         "WWWWWWWW"
@@ -42,14 +26,14 @@
       [
         "WWWEEWWW",
         "WWEEWWWW",
-        "WWWEEWWW",
+        "WWWETWWW",
         "WWWEWWWW",
-        "WWEEEEWW",
+        "WWETEEWW",
         "WWWWWWWW"
       ],
       [
         "WWWEEWWW",
-        "WWEWEEWW",
+        "WWEWETWW",
         "WWEWWWWW",
         "WWEEWEWW",
         "WWWWEEWW",
@@ -73,7 +57,7 @@
         "WWEEEWWW",
         "WWEWWWEE",
         "WWEEEEEE",
-        "WWEEEEEE",
+        "WWEETEEE",
         "WWWWWWWW"
       ],
       [
@@ -86,7 +70,7 @@
       ],
       [
         "WWWWWWWW",
-        "WWEWWWWW",
+        "WWTWWWWW",
         "WWEEEEEE",
         "WWEEWEEE",
         "WWEEWEWW",
@@ -109,24 +93,24 @@
         "WWWWWWWW",
         "WWWEEEWW",
         "WWEEEEEW",
-        "WEEEEEEW",
+        "WEETEEEW",
         "WWWWEEWW",
         "WWEEEEEW"
       ],
       [
         "WWWWWWWW",
         "WWWEEWWW",
-        "WWWEEEWW",
-        "WEEEEWWW",
+        "WWWEETWW",
+        "WETEEWWW",
         "WWEEWWWW",
         "WWEEEWWW"
       ],
       [
         "WWWWWWWW",
         "WWWEEEEW",
-        "EEEEEWWW",
+        "EEETEWWW",
         "EEEEWWEW",
-        "WWEEEEEW",
+        "WWETEEEW",
         "WWEEEEEW"
       ],
       [
@@ -147,14 +131,14 @@
         "WWWEEWWW",
         "EEEEEEWW",
         "EEEEEEWW",
-        "WWEEEEEW",
+        "WWETEEEW",
         "WWWWWWWW"
       ],
       [
         "WWWWWWWW",
-        "WWEEEWWW",
+        "WWTEEWWW",
         "EEEEEEWW",
-        "EEEEEWWW",
+        "EETEEWWW",
         "WWWWWWWW",
         "WWWWWWWW"
       ],
@@ -162,16 +146,16 @@
         "WWWWWWWW",
         "WWEEWWWW",
         "EWEEEEWW",
-        "EEEEWEWW",
-        "EEEEWEWW",
+        "ETEEWEWW",
+        "EEEEWTWW",
         "WWWWWWWW"
       ],
       [
         "WWWWWWWW",
-        "WWEEEEWW",
+        "WWEETEWW",
         "EEEEWWWW",
         "EEEEWWWW",
-        "WWEEEEEW",
+        "WWEEEETW",
         "WWWWWWWW"
       ]
     ]
@@ -181,9 +165,9 @@
     "templates":[
       [
         "WWWWWWWW",
-        "WWWEEWWW",
+        "WWWTEWWW",
         "EEEEEEEE",
-        "EEEWWWEE",
+        "EETWWWEE",
         "WWEEEEEE",
         "WWWWWWWW"
       ],
@@ -199,16 +183,16 @@
         "WWWWWWWW",
         "WWEEWWWW",
         "EWEEEEWE",
-        "EEEEWEEE",
-        "WWEEWEEE",
+        "EEETWEEE",
+        "WWEETEEE",
         "WWWWWWWW"
       ],
       [
         "WWWWWWWW",
         "WWEEEEWW",
-        "EEEEWWWE",
+        "EEEETWWE",
         "EEEEWWEE",
-        "WWEEEEEE",
+        "WTEEEEEE",
         "WWWWWWWW"
       ]
     ]
@@ -221,14 +205,14 @@
         "WWWEPWWW",
         "EEEEEEEE",
         "EEEEEEEE",
-        "WWEEEEEE",
+        "WWETETEE",
         "WWWWWWWW"
       ],
       [
         "WWWWWWWW",
         "WWEEEEEE",
         "EEEPEEEE",
-        "EEEEEWWE",
+        "EEEEETTE",
         "EWWWEEWW",
         "WWWWWWWW"
       ],
@@ -243,8 +227,8 @@
       [
         "WWWWWWWW",
         "WWEEEPWW",
-        "EEEEWWWE",
-        "EEEEWWEE",
+        "EEEETWWE",
+        "EEEETWEE",
         "WWEEEEEE",
         "WWWWWWWW"
       ]
@@ -255,10 +239,10 @@
     "templates":[
       [
         "WWWWWWWW",
-        "WWWEEWWW",
+        "WWWEEWTW",
         "WWEEEEEE",
         "EEEEEEEE",
-        "WWEEEEEE",
+        "WTEEETTE",
         "WWWWXWWW"
       ],
       [
@@ -272,15 +256,15 @@
       [
         "WWWWWWWW",
         "WWEEWWWW",
-        "EWEEEEWE",
-        "EEEEWEEE",
+        "EWEEEETE",
+        "EEEETEEE",
         "WWEEWEEE",
         "WWXWWWWW"
       ],
       [
         "WWWWWWWW",
         "WWEEEEWW",
-        "EEEEWWWE",
+        "EEEETTWE",
         "EEEEWWEE",
         "WWEEEEEE",
         "WWWWXWWW"
@@ -295,29 +279,29 @@
         "WWWEEEWW",
         "EEEEEEEE",
         "EEEEEEEE",
-        "WWWWEEWW",
+        "WTTWEEWW",
         "WWWWWWWW"
       ],
       [
         "WWEEEWWW",
         "WWWEEWWW",
         "EWWEEEEE",
-        "EEEEEWEE",
-        "WWEEWWWW",
+        "EEEEETEE",
+        "WWEEWTTW",
         "WWWWWWWW"
       ],
       [
         "WWEEEEWW",
         "WWWEEEEW",
-        "EEEEEWWE",
-        "EEEEWWEE",
+        "EEEEETWE",
+        "EEEETTEE",
         "WWEEEEEE",
         "WWWWWWWW"
       ],
       [
         "WEEEEEEE",
-        "WWWEEEWW",
-        "EEWEEEEE",
+        "WWTEEEWW",
+        "EETTEEEE",
         "EEEEEEEE",
         "WWEEEEWW",
         "WWWWWWWW"
@@ -330,14 +314,14 @@
       [
         "WWEEEEWW",
         "WWWEEEWW",
-        "EEEEEEEE",
+        "EETTEETE",
         "EEEEEEEE",
         "WWWWPEWW",
         "WWWWWWWW"
       ],
       [
         "WWEEEWWW",
-        "WWWEEWWW",
+        "WTTEEWWW",
         "EWWEEEEE",
         "EEEEEWEE",
         "WWEPWWWW",
@@ -346,15 +330,15 @@
       [
         "WWEEEEWW",
         "WWWEEEPW",
-        "EEEEEWWE",
-        "EEEEWWEE",
+        "EEEEETWE",
+        "EEEETTEE",
         "WWEEEEEE",
         "WWWWWWWW"
       ],
       [
         "WEEEEEEE",
-        "WWWEEEWW",
-        "EEWEEEEE",
+        "WWTEEEWW",
+        "EETEEEEE",
         "EEEEEEEE",
         "WWEEPEWW",
         "WWWWWWWW"
@@ -366,32 +350,32 @@
     "templates": [
       [
         "WWEEEEWW",
-        "WWWEEEWW",
-        "EEEEEEEE",
-        "EEEEEEEE",
+        "WWTEEEWW",
+        "EEEEEETE",
+        "EETEEEEE",
         "WWWWEEWW",
         "WWWWXWWW"
       ],
       [
         "WWEEEWWW",
-        "WWWEEWWW",
-        "EWWEEEEE",
+        "WWWEETTW",
+        "EWTEEEEE",
         "EEEEEWEE",
         "WWEEWWWW",
         "WWWXWWWW"
       ],
       [
         "WWEEEEWW",
-        "WWWEEEEW",
-        "EEEEEWWE",
-        "EEEEWWEE",
+        "WTTEEEEW",
+        "EEEETWWE",
+        "EEEETTEE",
         "WWEEEEEE",
         "WWWXWWWW"
       ],
       [
         "WEEEEEEE",
-        "WWWEEEWW",
-        "EEWEEEEE",
+        "WWTEEEWW",
+        "EETEEEEE",
         "EEEEEEEE",
         "WWEEEEWW",
         "WWWWXWWW"
@@ -403,15 +387,15 @@
     "templates": [
       [
         "WWWWWWWW",
-        "WWWWWEWW",
-        "EEWWEEEE",
+        "WWWTTEWW",
+        "EETTEEEE",
         "EEEEEEEE",
         "WWEEEEWW",
         "WWEEEWWW"
       ],
       [
         "WWWWWWWW",
-        "WWWEEWWW",
+        "WWWTTWWW",
         "EWWEEEEE",
         "EEEEEWEE",
         "WWEEWWWW",
@@ -419,7 +403,7 @@
       ],
       [
         "WWWWWWWW",
-        "WWWEEWWW",
+        "WTTWEEWWW",
         "EEEEEEEE",
         "EEEEWWEE",
         "WWEWWWEE",
@@ -427,8 +411,8 @@
       ],
       [
         "WWWWWWWW",
-        "WWWEEEWW",
-        "EEWEEEEE",
+        "WWTEEEWW",
+        "EETEEEEE",
         "EEEEEEEE",
         "WWEEEEWW",
         "WEEEEEWW"
@@ -443,15 +427,15 @@
         "WWWWWPWW",
         "EEWWEEEE",
         "EEEEEEEE",
-        "WWEEEEWW",
+        "WWTTEEWW",
         "WWWEEEEW"
       ],
       [
         "WWWWWWWW",
         "WWWEPWWW",
         "EWWEEEEE",
-        "EEEEEWEE",
-        "WWEEWWWW",
+        "EEEEETEE",
+        "WWEETTWW",
         "WWWEEEWW"
       ],
       [
@@ -464,8 +448,8 @@
       ],
       [
         "WWWWWWWW",
-        "WWWEPEWW",
-        "EEWEEEEE",
+        "WWTEPEWW",
+        "EETEEEEE",
         "EEEEEEEE",
         "WWEEEEWW",
         "WEEEEEWW"
@@ -478,7 +462,7 @@
       [
         "WWWWWWWW",
         "WWWWWEWW",
-        "EEWWEEEE",
+        "EETTEEEE",
         "EEEEEEEE",
         "WWEEEEWW",
         "WWWWXWWW"
@@ -486,7 +470,7 @@
       [
         "WWWWWWWW",
         "WWWEEWWW",
-        "EWWEEEEE",
+        "ETTEEEEE",
         "EEEEEWEE",
         "WWEEWWWW",
         "WWWXWWWW"
@@ -495,16 +479,16 @@
         "WWWWWWWW",
         "WWWEEWWW",
         "EEEEEEEE",
-        "EEEEWWEE",
-        "WWEWWWEE",
+        "EEEETWEE",
+        "WWETTWEE",
         "WWXWWWWW"
       ],
       [
         "WWWWWWWW",
-        "WWWEEEWW",
+        "WWTEEEWW",
         "EEWEEEEE",
-        "EEEEEEEE",
-        "WWEEEEWW",
+        "EEEETTEE",
+        "WWEEEEEW",
         "WWXWWWWW"
       ]
     ]
@@ -515,33 +499,33 @@
       [
         "WWWEEEEW",
         "WWWEWWWW",
-        "EEWEEEEE",
-        "EEEEEEEE",
-        "WWEEEEWW",
+        "EETEEEEE",
+        "EEEETEEE",
+        "WTEEEEWW",
         "WWEEEEWW"
       ],
       [
         "WEEEEWWW",
-        "WWWEEWWW",
-        "EWWEEEEE",
-        "EEWWEWEE",
+        "WWTEEWWW",
+        "EWTTEEEE",
+        "EEWTEWEE",
         "WEEEEWWW",
         "WWWEEEWW"
       ],
       [
         "WEEEEEEW",
-        "WWWEEWWW",
+        "WTTEEWWW",
         "EEEEEEEE",
-        "EEEEWWEE",
-        "WWEEEWEE",
+        "EEEETWEE",
+        "WWEETWEE",
         "WWEEEEEW"
       ],
       [
         "WEEEEEEW",
         "WEEEWWEW",
-        "EEEEWEEE",
+        "EEETTEEE",
         "EEEEEEEE",
-        "WEEEEEEW",
+        "WEETTEEW",
         "WEEEEEEW"
       ]
     ]
@@ -554,20 +538,20 @@
         "WWWEWWWW",
         "EEWEEEEE",
         "EEEEEEEE",
-        "WWEEEEWW",
+        "WWETTEWW",
         "WWEEEEWW"
       ],
       [
         "WPEEEWWW",
-        "WWWEEWWW",
+        "WWWEETTW",
         "EWWEEEEE",
-        "EEWWEWEE",
+        "EETTEWEE",
         "WEEEEWWW",
         "WWWEEEWW"
       ],
       [
         "WEEEEEPW",
-        "WWWEEWWW",
+        "WTTEETTW",
         "EEEEEEEE",
         "EEEEWWEE",
         "WWEEEWEE",
@@ -575,10 +559,10 @@
       ],
       [
         "WEEEEEEW",
-        "WPEEWWEW",
-        "EEEEWEEE",
+        "WPEETTEW",
+        "EEEEWTEE",
         "EEEEEEEE",
-        "WEEEEEEW",
+        "WEEEETTW",
         "WEEEEEEW"
       ]
     ]
@@ -588,15 +572,15 @@
     "templates": [
       [
         "WWWEEEEW",
-        "WWWEWWWW",
-        "EEWEEEEE",
+        "WWWETTTW",
+        "EEWEETEE",
         "EEEEEEEE",
         "WWEEEEWW",
         "WWWWXWWW"
       ],
       [
-        "WEEEEWWW",
-        "WWWEEWWW",
+        "WTEEETWW",
+        "WWWEETTW",
         "EWWEEEEE",
         "EEWWEWEE",
         "WEEEEWWW",
@@ -612,9 +596,9 @@
       ],
       [
         "WEEEEEEW",
-        "WEEEWWEW",
-        "EEEEWEEE",
-        "EEEEEEEE",
+        "WEEETTEW",
+        "EEEETEEE",
+        "EEETTEEE",
         "WEEEEEEW",
         "WWWXWWWW"
       ]

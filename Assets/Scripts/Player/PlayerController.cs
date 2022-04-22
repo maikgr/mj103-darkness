@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private float baseOuterRadius;
     private bool isHurtFlicker;
     private float unhurtOuterRadius;
+    private bool canControl = true;
 
     // Start is called before the first frame update
     void Start()
@@ -26,10 +27,12 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         // Movement
-        transform.localPosition = new Vector2(
-                transform.localPosition.x + Input.GetAxis("Horizontal") * Time.deltaTime * speed,
-                transform.localPosition.y + Input.GetAxis("Vertical") * Time.deltaTime * speed
-            );
+        if (canControl) {
+            transform.localPosition = new Vector2(
+                    transform.localPosition.x + Input.GetAxis("Horizontal") * Time.deltaTime * speed,
+                    transform.localPosition.y + Input.GetAxis("Vertical") * Time.deltaTime * speed
+                );
+        }
 
         // Light level
         if (Input.GetButton("Fire1"))
@@ -64,6 +67,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.tag == "ExitTile")
+        {
+            levelGenerator.RestartLevel();
+        }
+
+        if (other.tag == "Enemy")
+        {
+            StartCoroutine(PushPlayerBack(other.transform.position));
+        }
+    }
+
     private IEnumerator LightFlickerCoroutine() {
         // Light flickers
         while(true)
@@ -74,10 +89,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.transform.tag == "ExitTile")
-        {
-            levelGenerator.RestartLevel();
-        }
+    private IEnumerator PushPlayerBack(Vector3 otherPos)
+    {
+        canControl = false;
+        var difference = otherPos - this.transform.position;
+        this.transform.localPosition = new Vector2(
+            transform.localPosition.x - difference.x * 0.5f,
+            transform.localPosition.y - difference.y * 0.5f
+        );
+        yield return new WaitForSeconds(0.3f);
+        canControl = true;
     }
 }
