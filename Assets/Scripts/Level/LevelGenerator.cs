@@ -9,11 +9,11 @@ using Mj103Scripts.Level;
 public class LevelGenerator : MonoBehaviour
 {
     public GameObject CompositeShadowParent;
-    public GameObject FloorAsset;
     public GameObject PlayerAsset;
     public GameObject ExitAsset;
     public WallObjectGenerator WallObjectGenerator;
     public ExitObjectGenerator ExitObjectGenerator;
+    public FloorObjectGenerator FloorObjectGenerator;
     public TextAsset TemplateJson;
     private List<GameObject> generatedAssets = new List<GameObject>();
     private bool isGenerating = false;
@@ -280,17 +280,20 @@ public class LevelGenerator : MonoBehaviour
                 }
                 else if (cell == 'E')
                 {
-                    GenerateAsset(FloorAsset, currentPoint);
+                    var floor = FloorObjectGenerator.GetFloorObject();
+                    GenerateAsset(floor, currentPoint);
                 }
                 else if (cell == 'P')
                 {
-                    GenerateAsset(FloorAsset, currentPoint);
+                    var floor = FloorObjectGenerator.GetFloorObject();
+                    GenerateAsset(floor, currentPoint);
                     GenerateAsset(PlayerAsset, currentPoint);
                 }
                 else if (cell == 'X')
                 {
+                    var floor = FloorObjectGenerator.GetFloorObject();
                     var exit = ExitObjectGenerator.GetExitObject(template, i, j);
-                    GenerateAsset(FloorAsset, currentPoint);
+                    GenerateAsset(floor, currentPoint);
                     GenerateAsset(exit, currentPoint);
                 }
 

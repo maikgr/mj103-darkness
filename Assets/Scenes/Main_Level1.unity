@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 202926117}
   - component: {fileID: 202926116}
   m_Layer: 0
-  m_Name: CompositeShadoParent
+  m_Name: CompositeShadowParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 984184633}
   - component: {fileID: 984184635}
   - component: {fileID: 984184636}
+  - component: {fileID: 984184637}
   - component: {fileID: 984184634}
   m_Layer: 0
   m_Name: LevelManager
@@ -357,11 +358,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompositeShadowParent: {fileID: 202926115}
-  FloorAsset: {fileID: 4165611612309144663, guid: fb7c65ff286b1914895ca0024c9ba054, type: 3}
   PlayerAsset: {fileID: 4958018913491840405, guid: cb00c84348a34754e96a6a6f57c43f9b, type: 3}
   ExitAsset: {fileID: 5057055745281124227, guid: 8880f8c285b0c7a42b6ae8c4c7429150, type: 3}
   WallObjectGenerator: {fileID: 984184635}
   ExitObjectGenerator: {fileID: 984184636}
+  FloorObjectGenerator: {fileID: 984184637}
   TemplateJson: {fileID: 4900000, guid: e79a7e792e3432f47873f064a715784b, type: 3}
 --- !u!114 &984184635
 MonoBehaviour:
@@ -391,6 +392,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExitPrefab: {fileID: 5057055745281124227, guid: 8880f8c285b0c7a42b6ae8c4c7429150, type: 3}
+--- !u!114 &984184637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984184632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aea24e74c811c744b8d8217cec791bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorSprites:
+  - {fileID: -4373184736405950995, guid: 30c7da9ad47015b49a0435caf8ba75be, type: 3}
+  - {fileID: 4158732434352698325, guid: 30c7da9ad47015b49a0435caf8ba75be, type: 3}
+  - {fileID: 4341242654334979365, guid: 30c7da9ad47015b49a0435caf8ba75be, type: 3}
+  FloorPrefab: {fileID: 5501227444829353192, guid: fb7c65ff286b1914895ca0024c9ba054, type: 3}
 --- !u!1 &1227990132
 GameObject:
   m_ObjectHideFlags: 0
