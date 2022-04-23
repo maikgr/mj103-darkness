@@ -28,12 +28,12 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void MoveCamera(Vector2 playerPos) {
-        float xOffset = 0.5f;
-        float xMin = mainCamera.orthographicSize * 2 + xOffset;
-        float xMax = levelInstance.XSize - (mainCamera.orthographicSize * 2 - xOffset);
-        float yMin = -levelInstance.YSize + mainCamera.orthographicSize - 1;
-        float yMax = -mainCamera.orthographicSize;
+    private void MoveCamera(Vector2 playerPos) {
+        // float xOffset = 0.5f;
+        float xMin = 4.5f;
+        float xMax = 28.5f;
+        float yMin = -23f;
+        float yMax = -2.5f;
 
         float xPos = Mathf.Clamp(playerPos.x, xMin, xMax);
         float yPos = Mathf.Clamp(playerPos.y, yMin, yMax);

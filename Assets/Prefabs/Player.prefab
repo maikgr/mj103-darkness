@@ -3236,12 +3236,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4958018913491840404}
-  - component: {fileID: 4958018913491840411}
   - component: {fileID: 4958018913491840409}
   - component: {fileID: 4958018913491840410}
-  - component: {fileID: 322160495783932930}
+  - component: {fileID: 4958018913491840411}
+  - component: {fileID: 8089104615423585179}
   - component: {fileID: -7946317222010782524}
+  - component: {fileID: 4642511022278199667}
   - component: {fileID: -5188072425962459679}
+  - component: {fileID: 2951836275658076857}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3267,21 +3269,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4958018913491840411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4958018913491840405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b51fee54f2239a4ab4eeb34d6d1fc04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  stableLight: {fileID: 4311513481852227989}
-  AnimationScriptController: {fileID: 322160495783932930}
 --- !u!58 &4958018913491840409
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3319,7 +3306,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &322160495783932930
+--- !u!114 &4958018913491840411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3328,11 +3315,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 4958018913491840405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3835d20f4276be043a38124da70dd93d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b51fee54f2239a4ab4eeb34d6d1fc04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerLightFlicker: {fileID: -7946317222010782524}
-  PlayerLightHurt: {fileID: -5188072425962459679}
+--- !u!114 &8089104615423585179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958018913491840405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed7e886d330d3243b57350b3b802e86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  isAnimating: 0
 --- !u!114 &-7946317222010782524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3340,7 +3339,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4958018913491840405}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 834ff2b87272dcc4691968fca076a5b9, type: 3}
   m_Name: 
@@ -3348,6 +3347,21 @@ MonoBehaviour:
   stableLight: {fileID: 4311513481852227989}
   flickeringLight: {fileID: 6614922625706618800}
   flickerOffset: 0.08
+--- !u!114 &4642511022278199667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958018913491840405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 409e09dd2aed03641bfd694e1603ce5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stableLight: {fileID: 4311513481852227989}
+  maxRadius: 2
+  minRadius: 0.75
 --- !u!114 &-5188072425962459679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3364,6 +3378,20 @@ MonoBehaviour:
   flickeringLight: {fileID: 6614922625706618800}
   hurtOffset: 0.5
   HurtColor: {r: 1, g: 0.26727065, b: 0.25943398, a: 1}
+--- !u!114 &2951836275658076857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958018913491840405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28077a61b521adb42a78446ce47e89b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pushBackAmount: 0.75
+  delaySeconds: 0.5
 --- !u!1 &5070572797445985792
 GameObject:
   m_ObjectHideFlags: 0

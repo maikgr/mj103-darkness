@@ -4,31 +4,42 @@ using System.Collections;
 
 public class PlayerLightHurt : MonoBehaviour
 {
-  public Light2D stableLight;
-  public Light2D flickeringLight;
-  public float hurtOffset;
-  public Color HurtColor;
-  private float baseOuterRadius;
+    public Light2D stableLight;
+    public Light2D flickeringLight;
+    public float hurtOffset;
+    public Color HurtColor;
+    private float baseOuterRadius;
+    private PlayerLightLevelController lightLevelController;
 
-  private void OnEnable()
-  {
-    flickeringLight.color = HurtColor;
-    baseOuterRadius = stableLight.pointLightOuterRadius;
-    stableLight.pointLightOuterRadius -= hurtOffset;
-    CameraShakeController.Shake(0.5f, 0.02f);
-    StartCoroutine(LightColorChangeCoroutine());
-  }
-
-  private IEnumerator LightColorChangeCoroutine()
-  {
-    while (flickeringLight.color.g < Color.white.g && flickeringLight.color.b < Color.white.b)
-    {
-      var deltaTime = Time.fixedDeltaTime;
-      flickeringLight.color = Color.Lerp(flickeringLight.color, Color.white, Mathf.PingPong(Time.time, 1));
-      stableLight.pointLightOuterRadius = Mathf.Min(stableLight.pointLightOuterRadius + deltaTime, baseOuterRadius);
-      yield return new WaitForFixedUpdate();
+    private void Awake() {
+        lightLevelController = GetComponent<PlayerLightLevelController>();
     }
-    flickeringLight.color = Color.white;
-    GetComponent<PlayerLightHurt>().enabled = false;
-  }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.tag == "Enemy")
+        {
+            lightLevelController.isLightRestricted = true;
+            flickeringLight.color = HurtColor;
+            baseOuterRadius = stableLight.pointLightOuterRadius;
+            stableLight.pointLightOuterRadius = Mathf.Max(0, stableLight.pointLightOuterRadius - hurtOffset);
+            CameraShakeController.Shake(0.5f, 0.02f);
+            StartCoroutine(LightColorChangeCoroutine());
+        }
+    }
+
+    private IEnumerator LightColorChangeCoroutine()
+    {
+        var interpolationTime = 0f;
+        while (stableLight.pointLightOuterRadius < baseOuterRadius && 
+            flickeringLight.color.g < Color.white.g && flickeringLight.color.b < Color.white.b)
+        {
+            flickeringLight.color = Color.Lerp(flickeringLight.color, Color.white, interpolationTime);
+            stableLight.pointLightOuterRadius = Mathf.Lerp(stableLight.pointLightOuterRadius, baseOuterRadius, interpolationTime);
+            interpolationTime += Time.fixedDeltaTime * 0.5f;
+            yield return new WaitForFixedUpdate();
+        }
+        flickeringLight.color = Color.white;
+        stableLight.pointLightOuterRadius = baseOuterRadius;
+        lightLevelController.isLightRestricted = false;
+    }
 }
