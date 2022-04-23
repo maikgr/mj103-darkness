@@ -3155,6 +3155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4958018913064014998}
   - component: {fileID: 4958018913064014997}
+  - component: {fileID: 5089943045714662216}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -3216,7 +3217,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: efbec9e3c33f797448ed835dc64aa28f, type: 3}
+  m_Sprite: {fileID: -6781412095145881161, guid: efbec9e3c33f797448ed835dc64aa28f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3226,6 +3227,56 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!331 &5089943045714662216
+SpriteMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958018913064014999}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -6781412095145881161, guid: efbec9e3c33f797448ed835dc64aa28f, type: 3}
+  m_MaskAlphaCutoff: 0.2
+  m_FrontSortingLayerID: 0
+  m_BackSortingLayerID: 0
+  m_FrontSortingLayer: 0
+  m_BackSortingLayer: 0
+  m_FrontSortingOrder: 0
+  m_BackSortingOrder: 0
+  m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4958018913491840405
 GameObject:
@@ -3318,6 +3369,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b51fee54f2239a4ab4eeb34d6d1fc04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialHealth: 500
+  spriteRenderer: {fileID: 4958018913064014997}
+  sprites:
+  - {fileID: 4334783836991956000, guid: efbec9e3c33f797448ed835dc64aa28f, type: 3}
+  - {fileID: 7388399842426930641, guid: efbec9e3c33f797448ed835dc64aa28f, type: 3}
+  - {fileID: 6757282713640645180, guid: efbec9e3c33f797448ed835dc64aa28f, type: 3}
+  - {fileID: -6781412095145881161, guid: efbec9e3c33f797448ed835dc64aa28f, type: 3}
 --- !u!114 &8089104615423585179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3360,8 +3418,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stableLight: {fileID: 4311513481852227989}
-  maxRadius: 2
+  maxRadius: 3
   minRadius: 0.75
+  isLightRestricted: 0
 --- !u!114 &-5188072425962459679
 MonoBehaviour:
   m_ObjectHideFlags: 0
