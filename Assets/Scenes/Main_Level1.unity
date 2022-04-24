@@ -585,6 +585,7 @@ MonoBehaviour:
   CompositeShadowParent: {fileID: 202926115}
   PlayerAsset: {fileID: 4958018913491840405, guid: cb00c84348a34754e96a6a6f57c43f9b, type: 3}
   TrapAsset: {fileID: 904715052709851360, guid: cc929792b761cdc4da51a65d4644d003, type: 3}
+  LanternAsset: {fileID: 3863364638273768043, guid: 3b5799c764c13a5438d295b4bd7ffc8f, type: 3}
   WallObjectGenerator: {fileID: 984184635}
   ExitObjectGenerator: {fileID: 984184636}
   FloorObjectGenerator: {fileID: 984184637}

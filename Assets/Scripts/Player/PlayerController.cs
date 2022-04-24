@@ -44,11 +44,16 @@ public class PlayerController : MonoBehaviour
             SetHealth(CurrentHealth - 50f);
             UIManager.Instance.SetHealth(CurrentHealthPercentage * 100);
         }
+        if (other.tag == "Lantern")
+        {
+            SetHealth(CurrentHealth + other.GetComponent<LanternController>().UseLantern());
+            UIManager.Instance.SetHealth(CurrentHealthPercentage * 100);
+        }
     }
 
     private void SetHealth(float amount)
     {
-        CurrentHealth = Mathf.Max(0, amount);
+        CurrentHealth = Mathf.Clamp(amount, 0, initialHealth);
         if (CurrentHealthPercentage > 0.7f)
         {
             spriteRenderer.sprite = sprites[3];

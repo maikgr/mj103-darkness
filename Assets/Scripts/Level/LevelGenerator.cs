@@ -11,6 +11,7 @@ public class LevelGenerator : MonoBehaviour
     public GameObject CompositeShadowParent;
     public GameObject PlayerAsset;
     public GameObject TrapAsset;
+    public GameObject LanternAsset;
     public WallObjectGenerator WallObjectGenerator;
     public ExitObjectGenerator ExitObjectGenerator;
     public FloorObjectGenerator FloorObjectGenerator;
@@ -301,6 +302,12 @@ public class LevelGenerator : MonoBehaviour
                 else if (cell == 'T')
                 {
                     GenerateAsset(TrapAsset, currentPoint);
+                }
+                else if (cell == 'L')
+                {
+                    var floor = FloorObjectGenerator.GetFloorObject();
+                    GenerateAsset(floor, currentPoint);
+                    GenerateAsset(LanternAsset, currentPoint);
                 }
 
                 currentPoint.x += 1;
