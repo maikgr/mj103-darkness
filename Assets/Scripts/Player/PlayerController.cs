@@ -5,10 +5,10 @@ public class PlayerController : MonoBehaviour
 {
     public float initialHealth;
     public float CurrentHealth { get; private set; }
-    public SpriteRenderer spriteRenderer;
-    public List<Sprite> sprites;
+    public List<SpriteRenderer> sprites;
     private LevelGenerator levelGenerator;
     private PlayerLightLevelController lightLevelController;
+    private int currentSpriteIndex;
 
     private float CurrentHealthPercentage
     {
@@ -56,23 +56,40 @@ public class PlayerController : MonoBehaviour
         CurrentHealth = Mathf.Clamp(amount, 0, initialHealth);
         if (CurrentHealthPercentage > 0.7f)
         {
-            spriteRenderer.sprite = sprites[3];
             lightLevelController.maxRadius = 4;
+            SetSprite(3);
         }
         else if (CurrentHealthPercentage > 0.5f)
         {
-            spriteRenderer.sprite = sprites[2];
             lightLevelController.maxRadius = 2;
+            SetSprite(2);
         }
         else if (CurrentHealthPercentage > 0.25f)
         {
-            spriteRenderer.sprite = sprites[1];
             lightLevelController.maxRadius = 1;
+            SetSprite(1);
         }
         else if (CurrentHealthPercentage > 0.1f)
         {
-            spriteRenderer.sprite = sprites[0];
             lightLevelController.maxRadius = 0.5f;
+            SetSprite(0);
+        }
+    }
+
+    private void SetSprite(int index)
+    {
+        if (currentSpriteIndex != index)
+        {
+            currentSpriteIndex = index;
+            var current = GetComponentInChildren<SpriteRenderer>();
+            if (current != null)
+            {
+                GameObject.Destroy(current.gameObject);
+            }
+            var sprite = Instantiate(sprites[index], this.transform.position, Quaternion.identity);
+            sprite.transform.SetParent(this.transform); 
+            sprite.transform.localPosition = Vector3.zero;
+            sprite.transform.SetSiblingIndex(0);
         }
     }
 }

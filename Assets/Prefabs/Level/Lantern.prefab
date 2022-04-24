@@ -236,4 +236,4 @@ MonoBehaviour:
   useAmount: 1
   recoverAmount: 100
   activeLanternLightRadius: 2.5
-  inactiveLanternLightRadius: 1
+  inactiveLanternLightRadius: 0.75

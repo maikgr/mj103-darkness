@@ -18,8 +18,8 @@ public class PlayerLightFlicker : MonoBehaviour
         // Light flickers
         while (true)
         {
-            flickeringLight.pointLightOuterRadius = stableLight.pointLightOuterRadius - Random.Range(0f, flickerOffset);
-            flickeringLight.pointLightInnerRadius = stableLight.pointLightInnerRadius - Random.Range(0f, flickerOffset * 3);
+            flickeringLight.pointLightOuterRadius = Mathf.Max(0,stableLight.pointLightOuterRadius - Random.Range(0f, flickerOffset));
+            flickeringLight.pointLightInnerRadius = Mathf.Max(0, stableLight.pointLightInnerRadius - Random.Range(0f, flickerOffset * 3));
             yield return new WaitForSeconds(Random.Range(0, 0.2f));
         }
     }
