@@ -603,23 +603,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WallBasePrefab: {fileID: 162923817060587987, guid: 870444053a7522e4aa7b78acfc4d16f2, type: 3}
-  WallCornerPrefab: {fileID: 3349549546245919918, guid: bfcd948c5fb97464c939b1f4603f36c4, type: 3}
-  WallCornerMask: {fileID: 5642759992872849356, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
-  WallBaseMasks:
+  OuterWallCornerPrefab: {fileID: 3349549546245919918, guid: bfcd948c5fb97464c939b1f4603f36c4, type: 3}
+  InnerWallCornerPrefab: {fileID: 8384360870287372722, guid: 27249ed7a2c3663498989f971e598e0f, type: 3}
+  OuterWallCornerMask: {fileID: 5642759992872849356, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
+  InnerWallCornerMask: {fileID: 8597343234762195858, guid: 77505a13fbaa1a64496be20fcc803369, type: 3}
+  OuterWallBaseMasks:
   - {fileID: 7100856339549575628, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
   - {fileID: 6821505531540592281, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
   - {fileID: 2602728349407574607, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
   - {fileID: 3476111024226991014, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
-  WallSidePrefabs:
+  OuterWallSidePrefabs:
   - {fileID: 7170343025713525829, guid: fe251cddf057e9f4ab6a036f4e40a3ea, type: 3}
   - {fileID: 6599580523373412127, guid: 8779a6fbffc9b174f8da95fb79e77f66, type: 3}
   - {fileID: 1693685311181106481, guid: 469f4ba195cad02469c69d90def43e82, type: 3}
   - {fileID: 8703008480324849351, guid: 0e2a23cec1b9ec343893bdb29f3492db, type: 3}
-  WallLightMasks:
-  - {fileID: 3365321274702038899, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
-  - {fileID: 215931885860203917, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
-  - {fileID: 2419055756416327194, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
-  - {fileID: -2647615302047695476, guid: d4a8fdde15ca2364b98f0912776a94fe, type: 3}
+  InnerWallBaseMasks:
+  - {fileID: -3639059256076081256, guid: 77505a13fbaa1a64496be20fcc803369, type: 3}
+  - {fileID: 8090045897374256998, guid: 77505a13fbaa1a64496be20fcc803369, type: 3}
+  - {fileID: -1718378020011823128, guid: 77505a13fbaa1a64496be20fcc803369, type: 3}
+  - {fileID: 7230045863182172722, guid: 77505a13fbaa1a64496be20fcc803369, type: 3}
+  - {fileID: 7969287856627391778, guid: 77505a13fbaa1a64496be20fcc803369, type: 3}
+  InnerWallSidePrefabs:
+  - {fileID: 6119660594631183285, guid: 2b4aa4898f1a8744ea2c348d32d60218, type: 3}
+  - {fileID: 3199008987333270066, guid: 363901f34473b1e41b5ca453d1797cd8, type: 3}
+  - {fileID: 2527651614220735413, guid: 62cd9758b9ce598408c73ce19dce654f, type: 3}
+  - {fileID: 1151168304314701650, guid: f0c2764e1fa68a142be23c5a25fe2a56, type: 3}
+  - {fileID: 684028294960792348, guid: 5fec53683b884c240b4e2b37d04722b2, type: 3}
 --- !u!114 &984184636
 MonoBehaviour:
   m_ObjectHideFlags: 0

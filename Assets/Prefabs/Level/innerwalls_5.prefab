@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4165611612309144663
+--- !u!1 &684028294960792348
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4165611612309144656}
-  - component: {fileID: 5501227444829353192}
+  - component: {fileID: 684028294960792351}
+  - component: {fileID: 684028294960792350}
+  - component: {fileID: 684028294960792349}
   m_Layer: 0
-  m_Name: FloorTile
+  m_Name: innerwalls_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4165611612309144656
+--- !u!4 &684028294960792351
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4165611612309144663}
+  m_GameObject: {fileID: 684028294960792348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,13 +32,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5501227444829353192
+--- !u!212 &684028294960792350
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4165611612309144663}
+  m_GameObject: {fileID: 684028294960792348}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -70,8 +71,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -10
-  m_Sprite: {fileID: 4158732434352698325, guid: 30c7da9ad47015b49a0435caf8ba75be, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7215897694155141154, guid: 77505a13fbaa1a64496be20fcc803369, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -82,3 +83,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &684028294960792349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684028294960792348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000370dd7c4d79de302
+  m_ShapePath:
+  - {x: -0.49077034, y: -0.096203536, z: 0}
+  - {x: 0.5, y: -0.073129475, z: 0}
+  - {x: 0.50461483, y: 0.38001478, z: 0}
+  - {x: 0.38418347, y: 0.46955758, z: 0}
+  - {x: 0.2780427, y: 0.43725386, z: 0}
+  - {x: 0.107294485, y: 0.4764798, z: 0}
+  - {x: -0.24573898, y: 0.39341307, z: 0}
+  - {x: -0.358802, y: 0.4787872, z: 0}
+  - {x: -0.4976926, y: 0.3915518, z: 0}
+  m_ShapePathHash: 85288932
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -58848
