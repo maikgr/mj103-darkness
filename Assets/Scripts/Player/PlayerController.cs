@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
     public float initialHealth;
     public float CurrentHealth { get; private set; }
     public List<SpriteRenderer> sprites;
-    private LevelGenerator levelGenerator;
     private PlayerLightLevelController lightLevelController;
     private int currentSpriteIndex;
 
@@ -20,34 +19,25 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        levelGenerator = GameObject.FindGameObjectWithTag("GameController").GetComponent<LevelGenerator>();
         lightLevelController = GetComponent<PlayerLightLevelController>();
         SetHealth(initialHealth);
-        UIManager.Instance.SetHealth(CurrentHealthPercentage * 100);
     }
 
     private void FixedUpdate() {
         if (Input.GetButton("Fire1"))
         {
             SetHealth(CurrentHealth - Time.fixedDeltaTime * 20);
-            UIManager.Instance.SetHealth(CurrentHealthPercentage * 100);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "ExitTile")
-        {
-            levelGenerator.RestartLevel();
-        }
         if (other.tag == "Enemy")
         {
             SetHealth(CurrentHealth - 50f);
-            UIManager.Instance.SetHealth(CurrentHealthPercentage * 100);
         }
         if (other.tag == "Lantern")
         {
             SetHealth(CurrentHealth + other.GetComponent<LanternController>().UseLantern());
-            UIManager.Instance.SetHealth(CurrentHealthPercentage * 100);
         }
     }
 

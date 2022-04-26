@@ -7,14 +7,14 @@ public class CameraController : MonoBehaviour
 {
     private Transform player;
     private Camera mainCamera;
-    public LevelGenerator levelGenerator;
-    private LevelInstance levelInstance;
+    public Vector2 minPoint;
+    public Vector2 maxPoint;
     void Start() {
         mainCamera = GetComponent<Camera>();
     }
 
     void LateUpdate() {
-        if (player != null && levelInstance != null)
+        if (player != null)
         {
             MoveCamera(player.transform.position);
         }
@@ -22,21 +22,11 @@ public class CameraController : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
-        else if (levelInstance == null)
-        {
-            levelInstance = levelGenerator.levelInstance;
-        }
     }
 
     private void MoveCamera(Vector2 playerPos) {
-        // float xOffset = 0.5f;
-        float xMin = 4.5f;
-        float xMax = 28.5f;
-        float yMin = -23f;
-        float yMax = -2.5f;
-
-        float xPos = Mathf.Clamp(playerPos.x, xMin, xMax);
-        float yPos = Mathf.Clamp(playerPos.y, yMin, yMax);
+        float xPos = Mathf.Clamp(playerPos.x, minPoint.x, maxPoint.x);
+        float yPos = Mathf.Clamp(playerPos.y, minPoint.y, maxPoint.y);
         transform.position = new Vector3(xPos, yPos, transform.position.z);
     }
 }
