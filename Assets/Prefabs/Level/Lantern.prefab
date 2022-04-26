@@ -181,7 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3863364638273768046}
   - component: {fileID: 3863364638273768040}
-  - component: {fileID: 1345437952268243774}
+  - component: {fileID: 397667793133448065}
   m_Layer: 0
   m_Name: Lantern
   m_TagString: Lantern
@@ -221,7 +221,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
---- !u!114 &1345437952268243774
+--- !u!114 &397667793133448065
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -230,10 +230,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 3863364638273768043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adf99c6bc6d81e9408c318c4c6c8e54c, type: 3}
+  m_Script: {fileID: 11500000, guid: 88352e6e6a6a6da4e961ca4d7fd43a21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useAmount: 1
-  recoverAmount: 100
-  activeLanternLightRadius: 2.5
-  inactiveLanternLightRadius: 0.75
+  lanternStates:
+  - sprite: {fileID: -194818066077126744, guid: b9a1f38792318354cbf31243a8ee9f70, type: 3}
+    lightColor: {r: 0.9019608, g: 1, b: 1, a: 1}
+    lightRadius: 1.5
+    recoverAmount: 100
+  - sprite: {fileID: 7702638131693110658, guid: b9a1f38792318354cbf31243a8ee9f70, type: 3}
+    lightColor: {r: 0.9254902, g: 0.9019608, b: 0.9019608, a: 1}
+    lightRadius: 2.75
+    recoverAmount: 30
+  - sprite: {fileID: 1688127093310603583, guid: b9a1f38792318354cbf31243a8ee9f70, type: 3}
+    lightColor: {r: 0.972549, g: 0.7254902, b: 0.7254902, a: 1}
+    lightRadius: 1
+    recoverAmount: 10
+  - sprite: {fileID: 7958929529641746168, guid: b9a1f38792318354cbf31243a8ee9f70, type: 3}
+    lightColor: {r: 1, g: 0.627451, b: 0.627451, a: 1}
+    lightRadius: 0.5
+    recoverAmount: 0
