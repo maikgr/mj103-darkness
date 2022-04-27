@@ -16,10 +16,10 @@ public class LevelGenerator : MonoBehaviour
     public ExitObjectGenerator ExitObjectGenerator;
     public FloorObjectGenerator FloorObjectGenerator;
     public TextAsset TemplateJson;
+    public CameraController cameraController;
     private List<GameObject> generatedAssets = new List<GameObject>();
     private bool isGenerating = false;
     private IEnumerable<RoomTemplate> roomTemplates;
-    public LevelInstance levelInstance { get; private set; }
 
     void Start()
     {
@@ -58,8 +58,9 @@ public class LevelGenerator : MonoBehaviour
         var translatedTemplate = TranslateLevelTemplate(levelTemplate);
         var merged = MergeTemplate(translatedTemplate);
         var borderedTemplate = AddLevelBorder(merged);
-        levelInstance = new LevelInstance(merged[0].Length, merged.Length);
         RenderTemplate(new Vector2(0, 0), borderedTemplate);
+        cameraController.maxPoint = new Vector2(borderedTemplate.Length + 0.5f, 0.5f);
+        cameraController.minPoint = new Vector2(-0.5f, -borderedTemplate.Length + 0.5f);
     }
 
     private string[] AddLevelBorder(string[] mergedTemplate)

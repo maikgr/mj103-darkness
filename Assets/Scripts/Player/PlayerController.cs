@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            return CurrentHealth/initialHealth;
+            return CurrentHealth/100;
         }
     }
 
