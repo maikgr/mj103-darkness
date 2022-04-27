@@ -3235,7 +3235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b51fee54f2239a4ab4eeb34d6d1fc04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 100
+  initialHealth: 1000
   sprites:
   - {fileID: 5347118672940293231, guid: bd9cf427d2becb549b93842fa846ea09, type: 3}
   - {fileID: 3456163179657948004, guid: d00853cca757d174a907b84e4b1efd71, type: 3}
