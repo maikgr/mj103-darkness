@@ -24,7 +24,7 @@ public class LevelGenerator : MonoBehaviour
     void Start()
     {
         roomTemplates = JsonConvert.DeserializeObject<IEnumerable<RoomTemplate>>(TemplateJson.text);
-        GenerateLevel(3, 3);
+        GenerateLevel();
     }
 
     void Update()
@@ -39,7 +39,7 @@ public class LevelGenerator : MonoBehaviour
     {
         isGenerating = true;
         DestroyAssets();
-        GenerateLevel(3, 3);
+        GenerateLevel();
         isGenerating = false;
     }
 
@@ -51,8 +51,10 @@ public class LevelGenerator : MonoBehaviour
     * 4: left, right, and down path
     * 5: all direction path
     **/
-    private void GenerateLevel(int row, int column)
+    private void GenerateLevel()
     {
+        int row = 3 + GameController.Instance.currentLevel;
+        int column = 3 + GameController.Instance.currentLevel;
         var levelTemplate = GenerateLevelTemplatePath(row, column);
         levelTemplate = GenerateBlockingPath(levelTemplate);
         var translatedTemplate = TranslateLevelTemplate(levelTemplate);

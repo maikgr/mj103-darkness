@@ -2,12 +2,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StartScreenExitController : MonoBehaviour {
-    public string scenePath;
+    public string sceneName;
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag.Equals("Player"))
+        if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(scenePath);
+            SceneManager.LoadScene(sceneName);
         }
     }
 }
