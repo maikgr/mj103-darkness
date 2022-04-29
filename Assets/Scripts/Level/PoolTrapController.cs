@@ -5,12 +5,12 @@ public class PoolTrapController : MonoBehaviour
     public Animator poolAnimator;
     public float damageAmount;
     public float damageInterval;
+    [Range(0, 1)]
     public float speedModifier;
     private PlayerController playerController;
     private PlayerLightHurt playerLightHurt;
     private PlayerMovementController playerMovementController;
     private float lastDamagedTime;
-    private float originalSpeed;
 
     private void FixedUpdate()
     {
@@ -32,8 +32,7 @@ public class PoolTrapController : MonoBehaviour
             playerController = other.GetComponent<PlayerController>();
             playerLightHurt = other.GetComponent<PlayerLightHurt>();
             playerMovementController = other.GetComponent<PlayerMovementController>();
-            originalSpeed = playerMovementController.speed + 0f;
-            playerMovementController.speed = speedModifier;
+            playerMovementController.ModifySpeed(speedModifier);
             poolAnimator.SetBool("IsTrapActive", true);
         }
     }
@@ -41,8 +40,7 @@ public class PoolTrapController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("original " + originalSpeed);
-            playerMovementController.speed = originalSpeed;
+            playerMovementController.ResetSpeedModifier();
             playerController = null;
             playerLightHurt = null;
             playerMovementController = null;

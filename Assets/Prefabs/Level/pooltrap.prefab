@@ -70,7 +70,7 @@ MonoBehaviour:
   poolAnimator: {fileID: 4038466565057318815}
   damageAmount: 5
   damageInterval: 0.5
-  speedModifier: 1.5
+  speedModifier: 0.2
 --- !u!61 &727948512
 BoxCollider2D:
   m_ObjectHideFlags: 0

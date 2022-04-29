@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
-    public float speed;
+    [SerializeField]
+    private float speed;
     public bool isAnimating;
+    private float speedModifier = 1f;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -13,9 +15,19 @@ public class PlayerMovementController : MonoBehaviour
         // Movement
         if (!isAnimating) {
             transform.localPosition = new Vector2(
-                    transform.localPosition.x + Input.GetAxis("Horizontal") * Time.deltaTime * speed,
-                    transform.localPosition.y + Input.GetAxis("Vertical") * Time.deltaTime * speed
+                    transform.localPosition.x + Input.GetAxis("Horizontal") * Time.deltaTime * speed * speedModifier,
+                    transform.localPosition.y + Input.GetAxis("Vertical") * Time.deltaTime * speed * speedModifier
                 );
         }
+    }
+
+    public void ModifySpeed(float modifier)
+    {
+        this.speedModifier = modifier;
+    }
+
+    public void ResetSpeedModifier()
+    {
+        this.speedModifier = 1f;
     }
 }
