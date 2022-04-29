@@ -82,7 +82,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5626124165914964418}
   - component: {fileID: 5626124165914964419}
-  - component: {fileID: 1748165373050250499}
+  - component: {fileID: 7904142131559592581}
   m_Layer: 0
   m_Name: MainExitTile
   m_TagString: ExitTile
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1748165373050250499
+--- !u!114 &7904142131559592581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,10 +140,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5626124165914964429}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f0e92798ca82f44b84f56b7464b477, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fe18ee90671bba499d55447cd15c598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Transition
+  transitionSceneName: Transition
+  endSceneName: End
 --- !u!1 &7454379407929054563
 GameObject:
   m_ObjectHideFlags: 0

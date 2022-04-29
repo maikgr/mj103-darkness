@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private PlayerLightLevelController lightLevelController;
     private int currentSpriteIndex;
     private LanternController nearbyLantern;
+    private EndLanternController endLantern;
 
     private float CurrentHealthPercentage
     {
@@ -29,9 +30,16 @@ public class PlayerController : MonoBehaviour
         {
             SetHealth(CurrentHealth - Time.fixedDeltaTime * 20);
         }
-        if (Input.GetKeyDown(KeyCode.Space) && nearbyLantern != null)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            SetHealth(CurrentHealth + nearbyLantern.UseLantern());
+            if (nearbyLantern != null)
+            {
+                SetHealth(CurrentHealth + nearbyLantern.UseLantern());
+            }
+            if (endLantern != null)
+            {
+                endLantern.UseLantern();
+            }
         }
     }
 
@@ -44,12 +52,20 @@ public class PlayerController : MonoBehaviour
         {
             nearbyLantern = other.GetComponent<LanternController>();
         }
+        if (other.tag == "EndLantern")
+        {
+            endLantern = other.GetComponent<EndLanternController>();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         if (other.tag == "Lantern")
         {
             nearbyLantern = null;
+        }
+        if (other.tag == "EndLantern")
+        {
+            endLantern = null;
         }
     }
 

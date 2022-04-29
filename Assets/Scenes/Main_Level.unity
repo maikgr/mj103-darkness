@@ -643,7 +643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c446b3d23ef40469c2a84b85b31bab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExitPrefab: {fileID: 5057055745281124227, guid: 8880f8c285b0c7a42b6ae8c4c7429150, type: 3}
+  ExitPrefab: {fileID: 5626124165914964429, guid: 610af951fb4dec74cbe31abedb5be108, type: 3}
 --- !u!114 &984184637
 MonoBehaviour:
   m_ObjectHideFlags: 0
