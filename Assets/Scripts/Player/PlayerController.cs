@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void SetHealth(float amount)
+    public void SetHealth(float amount)
     {
         CurrentHealth = Mathf.Clamp(amount, 0, initialHealth);
         if (CurrentHealthPercentage > 0.7f)

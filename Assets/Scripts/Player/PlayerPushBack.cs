@@ -11,12 +11,9 @@ public class PlayerPushBack : MonoBehaviour
         movementController = GetComponent<PlayerMovementController>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Enemy")
-        {
-            movementController.isAnimating = true;
-            StartCoroutine(PushPlayerBack(other.transform.position));
-        }
+    public void PushBack(Vector3 otherPos) {
+        movementController.isAnimating = true;
+        StartCoroutine(PushPlayerBack(otherPos));
     }
 
     private IEnumerator PushPlayerBack(Vector3 otherPos)

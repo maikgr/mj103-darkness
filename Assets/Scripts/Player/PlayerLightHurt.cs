@@ -15,16 +15,12 @@ public class PlayerLightHurt : MonoBehaviour
         lightLevelController = GetComponent<PlayerLightLevelController>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Enemy")
-        {
-            lightLevelController.isLightRestricted = true;
-            flickeringLight.color = HurtColor;
-            baseOuterRadius = stableLight.pointLightOuterRadius;
-            stableLight.pointLightOuterRadius = Mathf.Max(0, stableLight.pointLightOuterRadius - hurtOffset);
-            CameraShakeController.Shake(0.5f, 0.02f);
-            StartCoroutine(LightColorChangeCoroutine());
-        }
+    public void HurtFlicker() {
+        lightLevelController.isLightRestricted = true;
+        flickeringLight.color = HurtColor;
+        baseOuterRadius = stableLight.pointLightOuterRadius;
+        stableLight.pointLightOuterRadius = Mathf.Max(0, stableLight.pointLightOuterRadius - hurtOffset);
+        StartCoroutine(LightColorChangeCoroutine());
     }
 
     private IEnumerator LightColorChangeCoroutine()

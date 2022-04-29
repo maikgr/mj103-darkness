@@ -10,11 +10,12 @@ public class LevelGenerator : MonoBehaviour
 {
     public GameObject CompositeShadowParent;
     public GameObject PlayerAsset;
-    public GameObject TrapAsset;
+    public GameObject PoolTrapPrefab;
     public GameObject LanternAsset;
     public WallObjectGenerator WallObjectGenerator;
     public ExitObjectGenerator ExitObjectGenerator;
     public FloorObjectGenerator FloorObjectGenerator;
+    public WallHandTrapGenerator WallHandTrapGenerator;
     public TextAsset TemplateJson;
     public CameraController cameraController;
     private List<GameObject> generatedAssets = new List<GameObject>();
@@ -302,9 +303,18 @@ public class LevelGenerator : MonoBehaviour
                     GenerateAsset(floor, currentPoint);
                     GenerateAsset(exit, currentPoint);
                 }
-                else if (cell == 'T')
+                else if (cell == 'O')
                 {
-                    GenerateAsset(TrapAsset, currentPoint);
+                    var floor = FloorObjectGenerator.GetFloorObject();
+                    GenerateAsset(floor, currentPoint);
+                    GenerateAsset(PoolTrapPrefab, currentPoint);
+                }
+                else if (cell == 'H')
+                {
+                    var trap = WallHandTrapGenerator.GetWallHandTrap(template, i, j);
+                    var floor = FloorObjectGenerator.GetFloorObject();
+                    GenerateAsset(floor, currentPoint);
+                    GenerateAsset(trap, currentPoint);
                 }
                 else if (cell == 'L')
                 {
