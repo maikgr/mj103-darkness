@@ -1,26 +1,77 @@
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class PlayerLightFlicker : MonoBehaviour
 {
-    public Light2D stableLight;
-    public Light2D flickeringLight;
-    public float flickerOffset;
+    [SerializeField]
+    private Light2D stableLight;
+    [SerializeField]
+    private Light2D flickerLight;
+    [SerializeField]
+    private float adjustmentDelay;
+    private AnimationCurve OuterRadiusAnimationCurve;
+    private AnimationCurve InnerRadiusAnimationCurve;
+    private float lastCheckTime;
+    private float lastStableLightRadius;
+    private float animationDeltaTime;
 
     private void Start()
     {
-        StartCoroutine(LightFlickerCoroutine());
+        animationDeltaTime = Time.deltaTime;
+        lastCheckTime = Time.time;
+        lastStableLightRadius = stableLight.pointLightOuterRadius;
+        AdjustLightFlicker(lastStableLightRadius);
     }
 
-    private IEnumerator LightFlickerCoroutine()
-    {
-        // Light flickers
-        while (true)
+    private void Update() {
+        animationDeltaTime += Time.deltaTime;
+        flickerLight.pointLightOuterRadius = OuterRadiusAnimationCurve.Evaluate(animationDeltaTime);
+        flickerLight.pointLightInnerRadius = InnerRadiusAnimationCurve.Evaluate(animationDeltaTime);
+    }
+
+    private void FixedUpdate() {
+        // if stable light adjusted, check every 'adjustment delay' seconds
+        if (stableLight.pointLightOuterRadius != lastStableLightRadius && Time.time - lastCheckTime > adjustmentDelay)
         {
-            flickeringLight.pointLightOuterRadius = Mathf.Max(0,stableLight.pointLightOuterRadius - Random.Range(0f, flickerOffset));
-            flickeringLight.pointLightInnerRadius = Mathf.Max(0, stableLight.pointLightInnerRadius - Random.Range(0f, flickerOffset * 3));
-            yield return new WaitForSeconds(Random.Range(0, 0.2f));
+            lastCheckTime = Time.time;
+            lastStableLightRadius = stableLight.pointLightOuterRadius;
+            AdjustLightFlicker(lastStableLightRadius);
         }
+    }
+
+    private void AdjustLightFlicker(float lightRadius)
+    {
+        float outerRadiusOffset = 0.15f;
+        float innerRadisOffset = 0.1f;
+        int frameCount = 10;
+
+        OuterRadiusAnimationCurve = new AnimationCurve(
+            Enumerable.Range(0, frameCount)
+                .Select(index =>
+                    new Keyframe
+                    (
+                        index * 0.2f,
+                        lightRadius + Random.Range(0f, outerRadiusOffset)
+                    ))
+                .ToArray()
+        );
+        OuterRadiusAnimationCurve.postWrapMode = WrapMode.Loop;
+        OuterRadiusAnimationCurve.preWrapMode = WrapMode.Loop;
+
+        InnerRadiusAnimationCurve  = new AnimationCurve(
+            Enumerable.Range(0, (int)frameCount)
+                .Select(index =>
+                    new Keyframe
+                    (
+                        index * 0.2f,
+                        0 + Random.Range(0f, innerRadisOffset)
+                    ))
+                .ToArray()
+        );
+        InnerRadiusAnimationCurve.postWrapMode = WrapMode.Loop;
+        InnerRadiusAnimationCurve.preWrapMode = WrapMode.Loop;
     }
 }

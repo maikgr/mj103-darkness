@@ -3268,8 +3268,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stableLight: {fileID: 4311513481852227989}
-  flickeringLight: {fileID: 6614922625706618800}
-  flickerOffset: 0.08
+  flickerLight: {fileID: 6614922625706618800}
+  adjustmentDelay: 0.05
 --- !u!114 &4642511022278199667
 MonoBehaviour:
   m_ObjectHideFlags: 0
