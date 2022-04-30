@@ -14,35 +14,64 @@ public class PlayerLightFlicker : MonoBehaviour
     private float adjustmentDelay;
     private AnimationCurve OuterRadiusAnimationCurve;
     private AnimationCurve InnerRadiusAnimationCurve;
-    private float lastCheckTime;
+    private AnimationCurve rColorAnimationCurve;
+    private AnimationCurve gColorAnimationCurve;
+    private AnimationCurve bColorAnimationCurve;
     private float lastStableLightRadius;
+    private PlayerAnimationName animationName;
     private float animationDeltaTime;
 
     private void Start()
     {
-        animationDeltaTime = Time.deltaTime;
-        lastCheckTime = Time.time;
         lastStableLightRadius = stableLight.pointLightOuterRadius;
-        AdjustLightFlicker(lastStableLightRadius);
+        animationName = PlayerAnimationName.Idle;
+        AdjustIdleLightFlicker(lastStableLightRadius);
+    }
+
+    public void PlayHurtAnimation()
+    {
+        AdjustHurtLight(lastStableLightRadius);
+        animationDeltaTime = 0f;
+        animationName = PlayerAnimationName.Hurt;
     }
 
     private void Update() {
-        animationDeltaTime += Time.deltaTime;
-        flickerLight.pointLightOuterRadius = OuterRadiusAnimationCurve.Evaluate(animationDeltaTime);
-        flickerLight.pointLightInnerRadius = InnerRadiusAnimationCurve.Evaluate(animationDeltaTime);
+        if (animationName == PlayerAnimationName.Idle)
+        {
+            animationDeltaTime += Time.deltaTime;
+            flickerLight.pointLightOuterRadius = OuterRadiusAnimationCurve.Evaluate(animationDeltaTime);
+            flickerLight.pointLightInnerRadius = InnerRadiusAnimationCurve.Evaluate(animationDeltaTime);
+        }
+        else if (animationName == PlayerAnimationName.Hurt)
+        {
+            animationDeltaTime += Time.deltaTime;
+            flickerLight.pointLightOuterRadius = OuterRadiusAnimationCurve.Evaluate(animationDeltaTime);
+            flickerLight.pointLightInnerRadius = InnerRadiusAnimationCurve.Evaluate(animationDeltaTime);
+            flickerLight.color = new Color(
+                rColorAnimationCurve.Evaluate(animationDeltaTime),
+                gColorAnimationCurve.Evaluate(animationDeltaTime),
+                bColorAnimationCurve.Evaluate(animationDeltaTime)
+            );
+
+            if (animationDeltaTime > rColorAnimationCurve[rColorAnimationCurve.length - 1].time)
+            {
+                animationName = PlayerAnimationName.Idle;
+                // force stable check to happen
+                lastStableLightRadius -= 0.1f;
+            }
+        }
     }
 
     private void FixedUpdate() {
         // if stable light adjusted, check every 'adjustment delay' seconds
-        if (stableLight.pointLightOuterRadius != lastStableLightRadius && Time.time - lastCheckTime > adjustmentDelay)
+        if (stableLight.pointLightOuterRadius != lastStableLightRadius)
         {
-            lastCheckTime = Time.time;
             lastStableLightRadius = stableLight.pointLightOuterRadius;
-            AdjustLightFlicker(lastStableLightRadius);
+            AdjustIdleLightFlicker(lastStableLightRadius);
         }
     }
 
-    private void AdjustLightFlicker(float lightRadius)
+    private void AdjustIdleLightFlicker(float lightRadius)
     {
         float outerRadiusOffset = 0.15f;
         float innerRadisOffset = 0.1f;
@@ -74,4 +103,43 @@ public class PlayerLightFlicker : MonoBehaviour
         InnerRadiusAnimationCurve.postWrapMode = WrapMode.Loop;
         InnerRadiusAnimationCurve.preWrapMode = WrapMode.Loop;
     }
+
+    private void AdjustHurtLight(float lightRadius)
+    {
+        OuterRadiusAnimationCurve = new AnimationCurve(
+            new Keyframe(0, lightRadius),
+            new Keyframe(0.1f, lightRadius * 0.5f),
+            new Keyframe(0.4f, lightRadius)
+        );
+        OuterRadiusAnimationCurve.postWrapMode = WrapMode.Once;
+        OuterRadiusAnimationCurve.preWrapMode = WrapMode.Once;
+        InnerRadiusAnimationCurve = new AnimationCurve(
+            new Keyframe(0f, 0.1f)
+        );
+        InnerRadiusAnimationCurve.postWrapMode = WrapMode.Once;
+        InnerRadiusAnimationCurve.preWrapMode = WrapMode.Once;
+
+        ColorUtility.TryParseHtmlString("#EA5252", out Color hurtColor);
+        rColorAnimationCurve = new AnimationCurve(
+            new Keyframe(0, Color.white.r),
+            new Keyframe(0.1f, hurtColor.r),
+            new Keyframe(0.4f, Color.white.r)
+        );
+        gColorAnimationCurve = new AnimationCurve(
+            new Keyframe(0, Color.white.g),
+            new Keyframe(0.1f, hurtColor.g),
+            new Keyframe(0.4f, Color.white.g)
+        );
+        bColorAnimationCurve = new AnimationCurve(
+            new Keyframe(0, Color.white.b),
+            new Keyframe(0.1f, hurtColor.b),
+            new Keyframe(0.4f, Color.white.b)
+        );
+    }
+}
+
+public enum PlayerAnimationName
+{
+    Idle = 0,
+    Hurt = 1
 }

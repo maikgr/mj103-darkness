@@ -8,7 +8,7 @@ public class PoolTrapController : MonoBehaviour
     [Range(0, 1)]
     public float speedModifier;
     private PlayerController playerController;
-    private PlayerLightHurt playerLightHurt;
+    private PlayerLightFlicker playerLightHurt;
     private PlayerMovementController playerMovementController;
     private float lastDamagedTime;
 
@@ -21,7 +21,7 @@ public class PoolTrapController : MonoBehaviour
         {
             lastDamagedTime = Time.time;
             playerController.SetHealth(playerController.CurrentHealth - damageAmount);
-            playerLightHurt.HurtFlicker();
+            playerLightHurt.PlayHurtAnimation();
         }
     }
 
@@ -30,7 +30,7 @@ public class PoolTrapController : MonoBehaviour
         {
             lastDamagedTime = Time.time;
             playerController = other.GetComponent<PlayerController>();
-            playerLightHurt = other.GetComponent<PlayerLightHurt>();
+            playerLightHurt = other.GetComponent<PlayerLightFlicker>();
             playerMovementController = other.GetComponent<PlayerMovementController>();
             playerMovementController.ModifySpeed(speedModifier);
             poolAnimator.SetBool("IsTrapActive", true);

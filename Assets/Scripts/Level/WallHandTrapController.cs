@@ -6,7 +6,7 @@ public class WallHandTrapController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerPushBack>().PushBack(this.transform.position);
-            other.GetComponent<PlayerLightHurt>().HurtFlicker();
+            other.GetComponent<PlayerLightFlicker>().PlayHurtAnimation();
         }
     }
 }
