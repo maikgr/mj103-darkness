@@ -98,16 +98,16 @@ public class PlayerController : MonoBehaviour
     {
         if (currentSpriteIndex != index)
         {
+            var spriteName = "PlayerSprite";
             currentSpriteIndex = index;
-            var current = GetComponentInChildren<SpriteRenderer>();
+            var current = this.transform.Find(spriteName);
             if (current != null)
             {
                 GameObject.Destroy(current.gameObject);
             }
-            var sprite = Instantiate(sprites[index], this.transform.position, Quaternion.identity);
-            sprite.transform.SetParent(this.transform); 
+            var sprite = Instantiate(sprites[index], this.transform.position, Quaternion.identity, this.transform);
+            sprite.name = spriteName;
             sprite.transform.localPosition = Vector3.zero;
-            sprite.transform.SetSiblingIndex(0);
         }
     }
 }
