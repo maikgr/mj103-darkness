@@ -9,6 +9,7 @@ TagManager:
   - Lantern
   - EndLantern
   - LanternLightArea
+  - MainFadeOut
   layers:
   - Default
   - TransparentFX

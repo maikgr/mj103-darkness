@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            return CurrentHealth/100;
+            return CurrentHealth/initialHealth;
         }
     }
 
@@ -91,6 +91,11 @@ public class PlayerController : MonoBehaviour
         {
             lightLevelController.maxRadius = 0.5f;
             SetSprite(0);
+        }
+        else if (CurrentHealthPercentage <= 0f)
+        {
+            GetComponent<PlayerMovementController>().ModifySpeed(0);
+            MainFadeOut.Instance.FadeOutScreen();
         }
     }
 
