@@ -676,6 +676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExitPrefab: {fileID: 5626124165914964429, guid: 610af951fb4dec74cbe31abedb5be108, type: 3}
+  ObjectPool: {fileID: 322187106}
 --- !u!114 &984184637
 MonoBehaviour:
   m_ObjectHideFlags: 0

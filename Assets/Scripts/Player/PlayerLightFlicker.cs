@@ -10,8 +10,6 @@ public class PlayerLightFlicker : MonoBehaviour
     private Light2D stableLight;
     [SerializeField]
     private Light2D flickerLight;
-    [SerializeField]
-    private float adjustmentDelay;
     private AnimationCurve OuterRadiusAnimationCurve;
     private AnimationCurve InnerRadiusAnimationCurve;
     private AnimationCurve rColorAnimationCurve;
