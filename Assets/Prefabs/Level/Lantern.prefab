@@ -33,7 +33,7 @@ RectTransform:
   - {fileID: 923916503}
   - {fileID: 3607337757319992823}
   m_Father: {fileID: 3863364638273768046}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -399,7 +399,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3863364638273768046}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4505666966001851599
 SpriteRenderer:
@@ -478,9 +478,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3863364638215158065}
   - component: {fileID: 3863364638215158070}
+  - component: {fileID: 6970543435879890084}
+  - component: {fileID: 7550505746791819261}
   m_Layer: 0
   m_Name: Point Light 2D
-  m_TagString: Untagged
+  m_TagString: LanternLightArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -497,7 +499,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3863364638273768046}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3863364638215158070
 MonoBehaviour:
@@ -540,6 +542,34 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!58 &6970543435879890084
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3863364638215158064}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
+--- !u!114 &7550505746791819261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3863364638215158064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dff25f6b7f1e43458c0bd8117a23668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3863364638273768043
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,11 +579,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3863364638273768046}
-  - component: {fileID: 3863364638273768040}
-  - component: {fileID: 397667793133448065}
   m_Layer: 0
   m_Name: Lantern
-  m_TagString: Lantern
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -569,19 +597,52 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 275080113176298262}
   - {fileID: 3863364638215158065}
   - {fileID: 1141839619989523038}
   - {fileID: 557485606}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &3863364638273768040
+--- !u!1 &6609473499638208527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 275080113176298262}
+  - component: {fileID: 6449844586913432357}
+  - component: {fileID: 3068084750708760036}
+  m_Layer: 0
+  m_Name: Lantern
+  m_TagString: Lantern
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &275080113176298262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6609473499638208527}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3863364638273768046}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &6449844586913432357
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3863364638273768043}
+  m_GameObject: {fileID: 6609473499638208527}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -591,13 +652,13 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
---- !u!114 &397667793133448065
+--- !u!114 &3068084750708760036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3863364638273768043}
+  m_GameObject: {fileID: 6609473499638208527}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88352e6e6a6a6da4e961ca4d7fd43a21, type: 3}
@@ -623,3 +684,5 @@ MonoBehaviour:
   DialogueText: {fileID: 923916504}
   InstructionText: {fileID: 6451210087358016910}
   fadeFactorization: 0.9
+  lanternLight: {fileID: 3863364638215158070}
+  spriteRenderer: {fileID: 4505666966001851599}

@@ -74,7 +74,7 @@ public class PlayerLightFlicker : MonoBehaviour
     private void AdjustIdleLightFlicker(float lightRadius)
     {
         float outerRadiusOffset = 0.15f;
-        float innerRadisOffset = 0.1f;
+        float innerRadisOffset = 0.3f;
         int frameCount = 10;
 
         OuterRadiusAnimationCurve = new AnimationCurve(

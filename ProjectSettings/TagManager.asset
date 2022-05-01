@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Lantern
   - EndLantern
+  - LanternLightArea
   layers:
   - Default
   - TransparentFX

@@ -46,7 +46,7 @@ public class PlayerShadowHandsController : MonoBehaviour
         {
             // Check if position is taken
             var hand = handsPool[Random.Range(0, handsPool.Count)];
-            if (existingHandsPool.Any(h => h.Position == hand.Position)) continue;
+            if (existingHandsPool.Any(existing => existing.Position == hand.Position)) continue;
 
             // Assign random hand
             var animator = hand.GetComponentInChildren<Animator>();

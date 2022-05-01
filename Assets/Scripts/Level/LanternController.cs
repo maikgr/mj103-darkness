@@ -14,12 +14,12 @@ public class LanternController : MonoBehaviour {
     [SerializeField]
     [Range(0, 1)]
     private float fadeFactorization;
+    [SerializeField]
     private Light2D lanternLight;
+    [SerializeField]
     private SpriteRenderer spriteRenderer;
     private int currentState;
     private void Awake() {
-        lanternLight = GetComponentInChildren<Light2D>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         DialogueText.alpha = 0;
         InstructionText.alpha = 0;
     }
