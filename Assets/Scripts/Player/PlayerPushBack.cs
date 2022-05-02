@@ -12,7 +12,7 @@ public class PlayerPushBack : MonoBehaviour
     }
 
     public void PushBack(Vector3 otherPos) {
-        movementController.isAnimating = true;
+        movementController.isMovementRestricted = true;
         StartCoroutine(PushPlayerBack(otherPos));
     }
 
@@ -24,6 +24,6 @@ public class PlayerPushBack : MonoBehaviour
             transform.localPosition.y - difference.y * pushBackAmount
         );
         yield return new WaitForSeconds(delaySeconds);
-        movementController.isAnimating = false;
+        movementController.isMovementRestricted = false;
     }
 }

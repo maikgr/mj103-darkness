@@ -3776,13 +3776,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b51fee54f2239a4ab4eeb34d6d1fc04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 2000
+  initialHealth: 1500
   AudioSource: {fileID: 7506368687779699398}
   sprites:
   - {fileID: 5347118672940293231, guid: bd9cf427d2becb549b93842fa846ea09, type: 3}
   - {fileID: 3456163179657948004, guid: d00853cca757d174a907b84e4b1efd71, type: 3}
   - {fileID: 1008745970106518483, guid: 38a6c15eeed8dff4087f79aa07639de7, type: 3}
   - {fileID: 3684420779169253631, guid: cf9c995c006cadd4597b9be8304a711c, type: 3}
+  lightLevelController: {fileID: 4642511022278199667}
+  movementController: {fileID: 8089104615423585179}
+  startSceneName: Start
 --- !u!114 &8089104615423585179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3796,7 +3799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  isAnimating: 0
+  isMovementRestricted: 0
 --- !u!114 &-7946317222010782524
 MonoBehaviour:
   m_ObjectHideFlags: 0

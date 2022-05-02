@@ -6,14 +6,14 @@ public class PlayerMovementController : MonoBehaviour
 {
     [SerializeField]
     private float speed;
-    public bool isAnimating;
+    public bool isMovementRestricted;
     private float speedModifier = 1f;
 
     // Update is called once per frame
     void FixedUpdate()
     {
         // Movement
-        if (!isAnimating) {
+        if (!isMovementRestricted) {
             transform.localPosition = new Vector2(
                     transform.localPosition.x + Input.GetAxis("Horizontal") * Time.deltaTime * speed * speedModifier,
                     transform.localPosition.y + Input.GetAxis("Vertical") * Time.deltaTime * speed * speedModifier

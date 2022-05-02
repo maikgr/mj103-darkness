@@ -9,11 +9,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private AudioSource AudioSource;
     public List<SpriteRenderer> sprites;
-    private PlayerLightLevelController lightLevelController;
+    public PlayerLightLevelController lightLevelController;
+    public PlayerMovementController movementController;
     private int currentSpriteIndex;
     private LanternController nearbyLantern;
     private EndLanternController endLantern;
-    private string startSceneName;
+    public string startSceneName;
 
     private float CurrentHealthPercentage
     {
@@ -25,14 +26,13 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        lightLevelController = GetComponent<PlayerLightLevelController>();
         SetHealth(initialHealth);
     }
 
     private void Update() {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && CurrentHealth > 0)
         {
-            SetHealth(CurrentHealth - Time.fixedDeltaTime * 20);
+            SetHealth(CurrentHealth - Time.fixedDeltaTime * 15f);
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -96,7 +96,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (CurrentHealthPercentage <= 0f)
         {
-            GetComponent<PlayerMovementController>().ModifySpeed(0);
+            lightLevelController.isLightRestricted = true;
+            movementController.ModifySpeed(0);
             AudioSource.Play();
             ScreenFadeController.Instance.FadeInScreen(
                 AudioSource.clip.length,
