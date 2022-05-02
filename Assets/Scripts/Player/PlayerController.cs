@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public float initialHealth;
     public float CurrentHealth { get; private set; }
+    [SerializeField]
+    private AudioSource AudioSource;
     public List<SpriteRenderer> sprites;
     private PlayerLightLevelController lightLevelController;
     private int currentSpriteIndex;
@@ -46,10 +48,6 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Enemy")
-        {
-            SetHealth(CurrentHealth - 50f);
-        }
         if (other.tag == "Lantern")
         {
             nearbyLantern = other.GetComponent<LanternController>();
@@ -76,22 +74,22 @@ public class PlayerController : MonoBehaviour
         
 
         CurrentHealth = Mathf.Clamp(amount, 0, initialHealth);
-        if (CurrentHealthPercentage > 0.7f)
+        if (CurrentHealthPercentage > 0.5f)
         {
             if (lightLevelController != null) lightLevelController.maxRadius = 4;
             SetSprite(3);
         }
-        else if (CurrentHealthPercentage > 0.5f)
+        else if (CurrentHealthPercentage > 0.3f)
         {
             if (lightLevelController != null) lightLevelController.maxRadius = 2;
             SetSprite(2);
         }
-        else if (CurrentHealthPercentage > 0.25f)
+        else if (CurrentHealthPercentage > 0.15f)
         {
             if (lightLevelController != null) lightLevelController.maxRadius = 1;
             SetSprite(1);
         }
-        else if (CurrentHealthPercentage > 0.1f)
+        else if (CurrentHealthPercentage > 0.05f)
         {
             if (lightLevelController != null) lightLevelController.maxRadius = 0.5f;
             SetSprite(0);
@@ -99,8 +97,9 @@ public class PlayerController : MonoBehaviour
         else if (CurrentHealthPercentage <= 0f)
         {
             GetComponent<PlayerMovementController>().ModifySpeed(0);
+            AudioSource.Play();
             ScreenFadeController.Instance.FadeInScreen(
-                2f,
+                AudioSource.clip.length,
                 0f,
                 new Color(0, 0, 0, 0),
                 () => SceneManager.LoadScene(startSceneName)

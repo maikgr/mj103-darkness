@@ -3,17 +3,18 @@ using UnityEngine.Experimental.Rendering.Universal;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class EndLanternController : MonoBehaviour
 {
+    public string startScene;
+    public AudioSource audioSource;
     [SerializeField]
     private List<LanternState> lanternStates;
     [SerializeField]
     private TMP_Text DialogueText;
     [SerializeField]
     private TMP_Text InstructionText;
-    [SerializeField]
-    private EndFadeInScene endFadeInScene;
     [SerializeField]
     [Range(0, 1)]
     private float fadeFactorization;
@@ -31,16 +32,22 @@ public class EndLanternController : MonoBehaviour
         StartCoroutine(UpdateLanternState(currentState));
     }
 
-    public float UseLantern()
+    public void UseLantern()
     {
-        var recoverAmount = lanternStates[currentState].recoverAmount;
+        if (currentState.Equals(lanternStates.LastIndex())) return;
+
+        audioSource.pitch = 0.5f + (0.1f * currentState);
+        audioSource.Play();
         currentState = Mathf.Min(currentState + 1, lanternStates.LastIndex());
         if (currentState.Equals(lanternStates.LastIndex())) {
-            StartCoroutine(FadeOutText(InstructionText, true));
-            recoverAmount = 0;
+            StartCoroutine(FadeOutText(InstructionText));
+            ScreenFadeController.Instance.FadeInScreen(5f, 0, new Color(1, 1, 1, 0), () => {
+                ScreenFadeController.Instance.FadeColorScreen(5f, 1f, Color.white, Color.black, () => {
+                    SceneManager.LoadScene(startScene);
+                });
+            });
         }
         StartCoroutine(UpdateLanternState(currentState));
-        return recoverAmount;
     }
 
     private IEnumerator UpdateLanternState(int state)
@@ -86,7 +93,7 @@ public class EndLanternController : MonoBehaviour
         }
     }
 
-    private IEnumerator FadeOutText(TMP_Text text, bool isEnd = false)
+    private IEnumerator FadeOutText(TMP_Text text)
     {
         float t = 0;
         while(text.alpha > 0)
@@ -94,11 +101,6 @@ public class EndLanternController : MonoBehaviour
             t += Time.deltaTime * fadeFactorization;
             text.alpha = Mathf.Lerp(1, 0, t);
             yield return new WaitForFixedUpdate();
-        }
-
-        if (isEnd)
-        {
-            endFadeInScene.StartEndScene();
         }
     }
 }

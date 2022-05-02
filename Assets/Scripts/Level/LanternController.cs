@@ -18,6 +18,8 @@ public class LanternController : MonoBehaviour {
     private Light2D lanternLight;
     [SerializeField]
     private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private AudioSource audioSource;
     private int currentState;
     private void Awake() {
         DialogueText.alpha = 0;
@@ -31,6 +33,8 @@ public class LanternController : MonoBehaviour {
     public float UseLantern()
     {
         var recoverAmount = lanternStates[currentState].recoverAmount;
+        audioSource.pitch = 1 - (0.2f * currentState);
+        audioSource.Play();
         currentState = Mathf.Min(currentState + 1, lanternStates.LastIndex());
         if (currentState.Equals(lanternStates.LastIndex())) {
             StartCoroutine(FadeOutText(InstructionText));
