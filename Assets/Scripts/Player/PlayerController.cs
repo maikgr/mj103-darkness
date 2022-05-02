@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private int currentSpriteIndex;
     private LanternController nearbyLantern;
     private EndLanternController endLantern;
+    private string startSceneName;
 
     private float CurrentHealthPercentage
     {
@@ -71,31 +73,38 @@ public class PlayerController : MonoBehaviour
 
     public void SetHealth(float amount)
     {
+        
+
         CurrentHealth = Mathf.Clamp(amount, 0, initialHealth);
         if (CurrentHealthPercentage > 0.7f)
         {
-            lightLevelController.maxRadius = 4;
+            if (lightLevelController != null) lightLevelController.maxRadius = 4;
             SetSprite(3);
         }
         else if (CurrentHealthPercentage > 0.5f)
         {
-            lightLevelController.maxRadius = 2;
+            if (lightLevelController != null) lightLevelController.maxRadius = 2;
             SetSprite(2);
         }
         else if (CurrentHealthPercentage > 0.25f)
         {
-            lightLevelController.maxRadius = 1;
+            if (lightLevelController != null) lightLevelController.maxRadius = 1;
             SetSprite(1);
         }
         else if (CurrentHealthPercentage > 0.1f)
         {
-            lightLevelController.maxRadius = 0.5f;
+            if (lightLevelController != null) lightLevelController.maxRadius = 0.5f;
             SetSprite(0);
         }
         else if (CurrentHealthPercentage <= 0f)
         {
             GetComponent<PlayerMovementController>().ModifySpeed(0);
-            MainFadeOut.Instance.FadeOutScreen();
+            ScreenFadeController.Instance.FadeInScreen(
+                2f,
+                0f,
+                new Color(0, 0, 0, 0),
+                () => SceneManager.LoadScene(startSceneName)
+            );
         }
     }
 

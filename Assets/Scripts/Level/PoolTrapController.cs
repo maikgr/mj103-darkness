@@ -7,6 +7,8 @@ public class PoolTrapController : MonoBehaviour
     public float damageInterval;
     [Range(0, 1)]
     public float speedModifier;
+    [SerializeField]
+    private AudioSource AudioSource;
     private PlayerController playerController;
     private PlayerLightFlicker playerLightHurt;
     private PlayerMovementController playerMovementController;
@@ -28,6 +30,7 @@ public class PoolTrapController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player"))
         {
+            AudioSource.Play();
             lastDamagedTime = Time.time;
             playerController = other.GetComponent<PlayerController>();
             playerLightHurt = other.GetComponent<PlayerLightFlicker>();
@@ -40,6 +43,7 @@ public class PoolTrapController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if (other.CompareTag("Player"))
         {
+            AudioSource.Stop();
             playerMovementController.ResetSpeedModifier();
             playerController = null;
             playerLightHurt = null;
