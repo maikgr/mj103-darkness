@@ -3,12 +3,12 @@ using UnityEngine.Experimental.Rendering.Universal;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 
 public class EndLanternController : MonoBehaviour
 {
-    public string startScene;
     public AudioSource audioSource;
+    [SerializeField]
+    private EndController endController;
     [SerializeField]
     private List<LanternState> lanternStates;
     [SerializeField]
@@ -36,16 +36,12 @@ public class EndLanternController : MonoBehaviour
     {
         if (currentState.Equals(lanternStates.LastIndex())) return;
 
-        audioSource.pitch = 0.5f + (0.1f * currentState);
+        audioSource.pitch = 0.4f + (0.2f * currentState);
         audioSource.Play();
         currentState = Mathf.Min(currentState + 1, lanternStates.LastIndex());
         if (currentState.Equals(lanternStates.LastIndex())) {
             StartCoroutine(FadeOutText(InstructionText));
-            ScreenFadeController.Instance.FadeInScreen(5f, 0, new Color(1, 1, 1, 0), () => {
-                ScreenFadeController.Instance.FadeColorScreen(5f, 1f, Color.white, Color.black, () => {
-                    SceneManager.LoadScene(startScene);
-                });
-            });
+            endController.StartCredit();
         }
         StartCoroutine(UpdateLanternState(currentState));
     }
