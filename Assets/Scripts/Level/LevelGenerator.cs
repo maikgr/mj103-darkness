@@ -19,29 +19,12 @@ public class LevelGenerator : MonoBehaviour
     public TextAsset TemplateJson;
     public CameraController cameraController;
     private List<GameObject> generatedAssets = new List<GameObject>();
-    private bool isGenerating = false;
     private IEnumerable<RoomTemplate> roomTemplates;
 
     void Start()
     {
         roomTemplates = JsonConvert.DeserializeObject<IEnumerable<RoomTemplate>>(TemplateJson.text);
         GenerateLevel();
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R) && !isGenerating)
-        {
-            RestartLevel();
-        }
-    }
-
-    public void RestartLevel()
-    {
-        isGenerating = true;
-        DestroyAssets();
-        GenerateLevel();
-        isGenerating = false;
     }
 
     /** Room type
@@ -336,14 +319,6 @@ public class LevelGenerator : MonoBehaviour
         obj.transform.localRotation = rotation ?? Quaternion.identity;
         obj.transform.SetParent(CompositeShadowParent.transform);
         generatedAssets.Add(obj);
-    }
-
-    private void DestroyAssets()
-    {
-        foreach(var obj in generatedAssets)
-        {
-            GameObject.Destroy(obj);
-        }
     }
 
     private int GetRandomIndex(int length)

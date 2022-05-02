@@ -46,9 +46,9 @@ public class EndController : MonoBehaviour
                 }
                 else {
                     ScreenFadeController.Instance.FadeColorScreen(
-                        3f,
-                        Mathf.Max(0, endingAudio.clip.length - endingAudio.time),
-                        Color.white, 
+                        5f,
+                        0,
+                        Color.white,
                         Color.black,
                         () => SceneManager.LoadScene(startScene)
                     );
